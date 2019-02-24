@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<!--
+    TODO define vocabulary identification data
+    PUBLIC ID  : -//vendor//vocabulary//EN
+    SYSTEM ID  : http://server/path/__NAME__
+-->
+
+<!-- TODO define your own vocabulary/syntax. Example follows:  -->
+<!ELEMENT __ROOT__ ANY>
+<!ATTLIST __ROOT__ version CDATA #REQUIRED>
+
+<!-- Put your DTD Doc comment here. -->
+<!ELEMENT employee (firstname|lastname|email)*>
+
+<!-- Put your DTD Doc comment here. -->
+<!ELEMENT firstname (#PCDATA)>
+
+<!-- Put your DTD Doc comment here. -->
+<!ELEMENT lastname (#PCDATA)>
+
+<!-- Put your DTD Doc comment here. -->
+<!ELEMENT email (#PCDATA)>
+
+
