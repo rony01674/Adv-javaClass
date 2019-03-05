@@ -20,4 +20,15 @@ public class DBConnection {
         }
         return null;
     }
+
+    public static Connection getDBConnection(String host, String port, String dbname, String username, String password) {
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + dbname, username, password);
+            System.out.println("Connected");
+            return connection;
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

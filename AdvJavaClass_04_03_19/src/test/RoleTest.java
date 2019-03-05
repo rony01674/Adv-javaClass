@@ -1,12 +1,12 @@
 package test;
 
 import dao.RoleDao;
-import service.RoleService;
+import service.RoleDaoImplement;
 
 public class RoleTest {
 
     public static void main(String[] args) {
-        RoleDao roleDao = new RoleService();
-        roleDao.createTable();
+        RoleDao roleDao = new RoleDaoImplement();
+        //roleDao.createTable();
     }
 }
