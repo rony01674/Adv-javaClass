@@ -5,7 +5,7 @@ import pojo.Role;
 
 public interface RoleDao {
     
-    void createTable(String sql);
+    void createTable();
 
     void save(Role role);
 

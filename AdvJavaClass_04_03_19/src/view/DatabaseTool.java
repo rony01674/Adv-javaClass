@@ -212,7 +212,7 @@ public class DatabaseTool extends javax.swing.JFrame {
         // TODO add your handling code here:
         RoleDao roleDao = new RoleDaoImplement();
         try {
-            roleDao.createTable(taSQL.getText().trim());
+          //  roleDao.createTable(taSQL.getText().trim());
             lblDisplay.setText("Success");
         } catch (Exception e) {
             lblDisplay.setText("Check Error");

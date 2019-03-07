@@ -4,60 +4,130 @@ import connection.DBConnection;
 import dao.RoleDao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import pojo.Role;
 import view.DatabaseTool;
 
 public class RoleDaoImplement implements RoleDao {
-
     
-
+    public RoleDaoImplement() {
+    }
+    
+    Connection connection = DBConnection.getDBConnection();
+    
     @Override
-    public void createTable(String sql) {
-        //String sql = "create table IF NOT EXISTS role(id int(2) auto_increment primary key, role_name varchar(20) not null unique)";
+    
+    public void createTable() {
+        String sql = "create table IF NOT EXISTS role(id int(2) auto_increment primary key, role_name varchar(20) not null unique)";
         try {
-            PreparedStatement pstm = DatabaseTool.connection.prepareStatement(sql);
+            PreparedStatement pstm = connection.prepareStatement(sql);
             pstm.execute();
             System.out.println("Table Created");
-        } catch (Exception e) {
+        } catch (SQLException ex) {
+            Logger.getLogger(RoleDaoImplement.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     @Override
     public void save(Role role) {
         String sql = "insert into role(role_name) values(?)";
         try {
-            PreparedStatement pstm = DatabaseTool.connection.prepareStatement(sql);
+            PreparedStatement pstm = connection.prepareStatement(sql);
             pstm.setString(1, role.getRoleName());
             pstm.executeUpdate();
-            System.out.println("Successfully Inserted");
-        } catch (Exception e) {
+            System.out.println("Insert success!");
+        } catch (SQLException ex) {
+            Logger.getLogger(RoleDaoImplement.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     @Override
     public void update(Role role) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "update role set role_name=? where id=?";
+        try {
+            PreparedStatement pstm = connection.prepareStatement(sql);
+            pstm.setString(1, role.getRoleName());
+            pstm.setInt(2, role.getId());
+            pstm.executeUpdate();
+            System.out.println("Update success!");
+        } catch (SQLException ex) {
+            Logger.getLogger(RoleDaoImplement.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-
+    
     @Override
     public Role getRoleByID(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        Role role = new Role();
+        String sql = "select * from role where id=?";
+        try {
+            PreparedStatement pstm = connection.prepareStatement(sql);
+            pstm.setInt(1, id);
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                role.setId(rs.getInt(1));
+                role.setRoleName(rs.getString(2));
+            }
 
+        } catch (SQLException ex) {
+            Logger.getLogger(RoleDaoImplement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return role;
+    }
+    
     @Override
     public Role getRoleByRoleName(String roleName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        Role role = new Role();
+        String sql = "select * from role where role_name=?";
+        try {
+            PreparedStatement pstm = connection.prepareStatement(sql);
+            pstm.setString(1, roleName);
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                role.setId(rs.getInt(1));
+                role.setRoleName(rs.getString(2));
+            }
 
+        } catch (SQLException ex) {
+            Logger.getLogger(RoleDaoImplement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return role;
+    }
+    
     @Override
     public void delete(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "delete from role where id=?";
+        try {
+            PreparedStatement pstm = connection.prepareStatement(sql);
+            pstm.setInt(1, id);
+            pstm.executeUpdate();
+            System.out.println("Delete success!");
+        } catch (SQLException ex) {
+            Logger.getLogger(RoleDaoImplement.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-
+    
     @Override
     public List<Role> getRoles() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        List<Role> list = new ArrayList<>();
+        String sql = "select * from role";
+        try {
 
+            PreparedStatement ps = DBConnection.getDBConnection().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Role role = new Role(rs.getInt(1), rs.getString(2));
+                list.add(role);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RoleDaoImplement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return list;
+    }
 }

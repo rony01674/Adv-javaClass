@@ -7,6 +7,6 @@ public class RoleTest {
 
     public static void main(String[] args) {
         RoleDao roleDao = new RoleDaoImplement();
-        //roleDao.createTable();
+        roleDao.createTable();
     }
 }
