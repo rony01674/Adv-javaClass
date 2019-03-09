@@ -26,29 +26,48 @@ public class UserView extends javax.swing.JFrame {
      */
     public UserView() {
         initComponents();
-        displayRoleListIntoTable();
-        displayRoleAtComboBox();
+        displayUserListIntoTable();
+        displayUserAtComboBox();
     }
-    
-    public void displayRoleAtComboBox(){
+
+    private int userId;
+
+    public void getSelectedRowData() {
+        DefaultTableModel model = (DefaultTableModel) tblDisplay.getModel();
+        int i = tblDisplay.getSelectedRow();
+        userId = Integer.parseInt(model.getValueAt(i, 0).toString().trim());
+        txtFullName.setText(model.getValueAt(i, 1).toString());
+        txtUserName.setText(model.getValueAt(i, 2).toString());
+        txtPassword.setText(model.getValueAt(i, 3).toString());
+        txtMobile.setText(model.getValueAt(i, 4).toString());
+        cmbRole.setSelectedItem(model.getValueAt(i, 5).toString());
+    }
+
+    public void displayUserAtComboBox() {
         RoleDao dao = new RoleDaoImplement();
         List<Role> roles = dao.getRoles();
         cmbRole.addItem("Select a Role");
-        for(Role role : roles){
-            cmbRole.addItem(role.getId()+" "+role.getRoleName());
+        for (Role role : roles) {
+            cmbRole.addItem(role.getRoleName());
         }
     }
-    
-    public void displayRoleListIntoTable() {
-         clearTable();
-        RoleDao dao = new RoleDaoImplement();       
-        List<Role> list = dao.getRoles();
+
+    public void displayUserListIntoTable() {
+        clearTable();
+        RoleDao roleDao = new RoleDaoImplement();
+        UserDao dao = new UserDaoImplemention();
+        List<User> list = dao.getUsers();
         DefaultTableModel model = (DefaultTableModel) tblDisplay.getModel();
-        Object[] cols = new Object[2];
+        Object[] cols = new Object[6];
 
         for (int i = 0; i < list.size(); i++) {
             cols[0] = list.get(i).getId();
-            cols[1] = list.get(i).getRoleName();
+            cols[1] = list.get(i).getFullName();
+            cols[2] = list.get(i).getUserName();
+            cols[3] = list.get(i).getPassword();
+            cols[4] = list.get(i).getMobile();
+            Role role = roleDao.getRoleByID(list.get(i).getId());
+            cols[5] = role.getRoleName();
             model.addRow(cols);
         }
     }
@@ -89,6 +108,11 @@ public class UserView extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -109,6 +133,11 @@ public class UserView extends javax.swing.JFrame {
                 "ID", "Full Name", "Username", "Password", "Mobile", "Role Name"
             }
         ));
+        tblDisplay.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDisplayMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblDisplay);
 
         btnAdd.setText("Add");
@@ -119,6 +148,11 @@ public class UserView extends javax.swing.JFrame {
         });
 
         btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnClear.setText("Clear");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
@@ -146,6 +180,11 @@ public class UserView extends javax.swing.JFrame {
         txtUserName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         txtPassword.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
 
         txtMobile.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtMobile.addActionListener(new java.awt.event.ActionListener() {
@@ -269,12 +308,15 @@ public class UserView extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
+        RoleDao roleDao = new RoleDaoImplement();
+
         String selectRole = cmbRole.getItemAt(cmbRole.getSelectedIndex());
-        int id = Integer.parseInt(selectRole.substring(0, 2).trim());
-        Role role = new Role(id);
+        //int id = Integer.parseInt(selectRole.substring(0, 2).trim());
+        Role role = roleDao.getRoleByRoleName(selectRole);
         User user = new User(txtFullName.getText(), txtUserName.getText(), txtPassword.getText(), txtMobile.getText(), role);
         UserDao obj = new UserDaoImplemention();
         obj.save(user);
+        displayUserListIntoTable();
         JOptionPane.showMessageDialog(null, "Success");
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -288,7 +330,36 @@ public class UserView extends javax.swing.JFrame {
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
+        clearTable();
     }//GEN-LAST:event_btnClearActionPerformed
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+        //getSelectedRowData();
+    }//GEN-LAST:event_formMouseClicked
+
+    private void tblDisplayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDisplayMouseClicked
+        // TODO add your handling code here:
+        getSelectedRowData();
+    }//GEN-LAST:event_tblDisplayMouseClicked
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+        RoleDao roleDao = new RoleDaoImplement();
+
+        String selectRole = cmbRole.getItemAt(cmbRole.getSelectedIndex());
+        //int id = Integer.parseInt(selectRole.substring(0, 2).trim());
+        Role role = roleDao.getRoleByRoleName(selectRole);
+        User user = new User(userId, txtFullName.getText(), txtUserName.getText(), txtPassword.getText(), txtMobile.getText(), role);
+        UserDao obj = new UserDaoImplemention();
+        obj.update(user);
+        displayUserListIntoTable();
+        JOptionPane.showMessageDialog(null, "Success");
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordActionPerformed
 
     /**
      * @param args the command line arguments

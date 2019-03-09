@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -55,15 +56,19 @@ public class UserDaoImplemention implements UserDao {
 
     @Override
     public void update(User user) {
-        String sql = "update user set user_name=? where id=?";
+        String sql = "update user set full_name=?, user_name=?, password=?, mobile_no=?, role_id=? where id=?";
         try {
             PreparedStatement pstm = connection.prepareStatement(sql);
             pstm.setString(1, user.getFullName());
-            pstm.setInt(2, user.getId());
+            pstm.setString(2, user.getUserName());
+            pstm.setString(3, user.getPassword());
+            pstm.setString(4, user.getMobile());
+            pstm.setInt(5, user.getRole().getId());
+            pstm.setInt(6, user.getId());
             pstm.executeUpdate();
             System.out.println("Update success!");
         } catch (SQLException ex) {
-            Logger.getLogger(RoleDaoImplement.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDaoImplemention.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -102,7 +107,21 @@ public class UserDaoImplemention implements UserDao {
 
     @Override
     public List<User> getUsers() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<User> users = new ArrayList<>();
+        User user;
+        String sql = "select * from user";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Role role = new Role(rs.getInt(6));
+                user = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(3), rs.getString(4), role);
+                users.add(user);
+            }
+        } catch (Exception e) {
+            Logger.getLogger(UserDaoImplemention.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return users;
     }
 
 }

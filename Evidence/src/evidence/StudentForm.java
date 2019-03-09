@@ -9,6 +9,7 @@ import evidence.student.Student;
 import evidence.student.Utils;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -273,27 +274,54 @@ public class StudentForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public boolean checkEmailValidity(String email) {
+
+        int atpos = email.indexOf("@");
+        int dotpos = email.lastIndexOf(".");
+
+        if (atpos > 1 && (dotpos - atpos) > 2 && dotpos < email.length() - 2) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
     private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDActionPerformed
 
     private void btnAddTableWriteFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTableWriteFileActionPerformed
         // TODO add your handling code here:
+        String id = "0", name = "", age = "", email = "", gender = "", cc = "", round = "", msg = "";
 
         // For ID
-        int id = Integer.parseInt(txtID.getText());
+        if (id.length() < 7) {
+            JOptionPane.showMessageDialog(null, "Id at least 7 characters");
+        } else {
+            id = txtID.getText();
+        }
 
         // For Name
-        String name = txtName.getText();
+        if (name.length() < 3) {
+            JOptionPane.showMessageDialog(null, "Name at least 3 characters");
+        } else {
+            name = txtName.getText();
+        }
 
         //For Age
-        int age = Integer.parseInt(txtAge.getText());
-
+        if (age.length() < 18 || age.length() > 70) {
+            JOptionPane.showMessageDialog(null, "Age must between 18 to 70");
+        } else {
+            age = txtAge.getText();
+        }
         // For Email
-        String email = txtEmail.getText();
-
+        if (checkEmailValidity(txtEmail.getText())) 
         // For Gender
-        String gender = "";
+        {
+            String 
+        }
+        gender = "";
         if (rMale.isSelected() == true) {
             gender = rMale.getText();
         }
@@ -324,7 +352,7 @@ public class StudentForm extends javax.swing.JFrame {
 
         // For Insert into table
         DefaultTableModel model = (DefaultTableModel) tblDisplay.getModel();
-        
+
         Object[] row = new Object[8];
         row[0] = id;
         row[1] = name;
@@ -334,19 +362,19 @@ public class StudentForm extends javax.swing.JFrame {
         row[5] = cc;
         row[6] = round;
         row[7] = msg;
-        
+
         model.addRow(row);
 
         // For write to file
-        Student student = new Student(id, name, age, email, gender, cc, round, msg);
+        Student student = new Student(Integer.parseInt(id), name, Integer.parseInt(age), email, gender, cc, round, msg);
         List<Student> list = new ArrayList<>();
         list.add(student);
-        
+
         try {
             Utils.writeToFile("Rony", list);
         } catch (Exception e) {
         }
-        
+
 
     }//GEN-LAST:event_btnAddTableWriteFileActionPerformed
 
