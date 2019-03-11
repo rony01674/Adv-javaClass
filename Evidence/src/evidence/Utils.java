@@ -1,4 +1,4 @@
-    package practice;
+package evidence;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -30,7 +30,7 @@ public class Utils {
         }
     }
 
-    public static void displayStudentDataFromFile(String fileName, DefaultTableModel model) {
+    public static void displayStudentsDataFromTable(String fileName, DefaultTableModel model) {
         String line;
         BufferedReader reader;
         try {
@@ -39,7 +39,7 @@ public class Utils {
                 model.addRow(line.split(" "));
             }
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Buffered Reader issue.");
+            JOptionPane.showMessageDialog(null, "Buffer reader issue");
         }
     }
 }

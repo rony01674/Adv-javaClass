@@ -1,4 +1,4 @@
-    package practice;
+package newpackage;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import sun.awt.resources.awt;
 
 public class Utils {
 
@@ -16,17 +17,17 @@ public class Utils {
         File destFile = new File(fileName + ".txt");
         try {
             if (destFile.exists() == false) {
-                System.out.println("We had to create a file.");
+                System.out.println("Create new file");
                 destFile.createNewFile();
             }
-            PrintWriter out = new PrintWriter(new FileWriter(destFile, true));
+            PrintWriter writer = new PrintWriter(new FileWriter(destFile, true));
             for (Student s : students) {
-                out.append(s.getId() + " " + s.getName() + " " + s.getEmail() + " " + s.getAge()
-                        + " " + s.getGender() + " " + s.getCourses() + " " + s.getRound() + " " + s.getMsg() + "\n");
+                writer.append(s.getId() + " " + s.getName() + " " + s.getEmail() + " "
+                        + s.getAge() + " " + s.getGender() + " " + s.getCourses() + " " + s.getRound()
+                        + " " + s.getMsg());
             }
-            out.close();
         } catch (IOException e) {
-            System.out.println("Could Not Log!!");
+            System.out.println("Could not log!");
         }
     }
 

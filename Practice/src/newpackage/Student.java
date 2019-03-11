@@ -1,25 +1,25 @@
-package evidence.student;
+package newpackage;
 
 public class Student {
     private int id;
     private String name;
-    private int age;
     private String email;
+    private int age;
     private String gender;
-    private String cc;
+    private String courses;
     private String round;
     private String msg;
 
     public Student() {
     }
 
-    public Student(int id, String name, int age, String email, String gender, String cc, String round, String msg) {
+    public Student(int id, String name, String email, int age, String gender, String courses, String round, String msg) {
         this.id = id;
         this.name = name;
-        this.age = age;
         this.email = email;
+        this.age = age;
         this.gender = gender;
-        this.cc = cc;
+        this.courses = courses;
         this.round = round;
         this.msg = msg;
     }
@@ -32,20 +32,20 @@ public class Student {
         return name;
     }
 
-    public int getAge() {
-        return age;
-    }
-
     public String getEmail() {
         return email;
+    }
+
+    public int getAge() {
+        return age;
     }
 
     public String getGender() {
         return gender;
     }
 
-    public String getCc() {
-        return cc;
+    public String getCourses() {
+        return courses;
     }
 
     public String getRound() {
@@ -64,20 +64,20 @@ public class Student {
         this.name = name;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public void setGender(String gender) {
         this.gender = gender;
     }
 
-    public void setCc(String cc) {
-        this.cc = cc;
+    public void setCourses(String courses) {
+        this.courses = courses;
     }
 
     public void setRound(String round) {
@@ -87,5 +87,11 @@ public class Student {
     public void setMsg(String msg) {
         this.msg = msg;
     }
+
+    @Override
+    public String toString() {
+        return "Students{" + "id=" + id + ", name=" + name + ", email=" + email + ", age=" + age + ", gender=" + gender + ", courses=" + courses + ", round=" + round + ", msg=" + msg + '}';
+    }
+    
     
 }
