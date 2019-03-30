@@ -17,6 +17,7 @@ public class InventoryView extends javax.swing.JFrame {
     public InventoryView() {
         initComponents();
         setLocationRelativeTo(null);
+        setResizable(false);
     }
 
     /**
