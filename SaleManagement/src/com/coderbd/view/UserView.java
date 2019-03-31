@@ -144,6 +144,12 @@ public class UserView extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Copyright: 2019 Round-39, J2EE , CCSL");
 
+        cmbRole.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbRoleActionPerformed(evt);
+            }
+        });
+
         jLabel6.setText("Full Name");
 
         jLabel7.setText("Username");
@@ -278,6 +284,10 @@ public class UserView extends javax.swing.JFrame {
         displayRoleListIntoTable();
         JOptionPane.showMessageDialog(null, "Success");
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void cmbRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRoleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbRoleActionPerformed
 
     public void displayRoles() {
 

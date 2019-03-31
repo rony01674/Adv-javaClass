@@ -14,6 +14,11 @@ import java.util.logging.Logger;
 
 public class RoleDaoImpl implements RoleDao {
 
+    public static void main(String[] args) {
+        RoleDaoImpl impl = new RoleDaoImpl();
+        impl.createTable();
+    }
+
     Connection conn = CustomDBConnection.getDBConnection();
 
     public RoleDaoImpl() {

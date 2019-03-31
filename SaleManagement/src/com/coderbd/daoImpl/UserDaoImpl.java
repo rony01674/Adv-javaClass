@@ -24,7 +24,10 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void createTable() {
-        String sql = "create table IF NOT EXISTS user(id int(11) auto_increment primary key, full_name varchar(50),user_name varchar(30) unique,password varchar(30),mobile_no varchar(14), role_id int(2),FOREIGN KEY (role_id) REFERENCES role(id))";
+        String sql = "create table IF NOT EXISTS user(id int(11) auto_increment"
+                + " primary key, full_name varchar(50),user_name varchar(30)"
+                + " unique,password varchar(30),mobile_no varchar(14),"
+                + " role_id int(2),FOREIGN KEY (role_id) REFERENCES role(id))";
         try {
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.execute();

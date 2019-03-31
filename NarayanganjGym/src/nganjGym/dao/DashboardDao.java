@@ -3,17 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package nganjGym.views;
-
-import javax.swing.JFrame;
+package nganjGym.dao;
 
 /**
  *
  * @author User
  */
-public class NewClass extends JFrame {
-    public static void main(String[] args) {
-        JFrame frame = new JFrame();
-        frame.setVisible(true);
-    }
+public interface DashboardDao {
+    
 }

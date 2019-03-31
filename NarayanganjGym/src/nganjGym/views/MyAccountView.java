@@ -5,6 +5,8 @@
  */
 package nganjGym.views;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author User
@@ -78,7 +80,7 @@ public class MyAccountView extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(1, 140, 157));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Navigation", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        btnMyAccount.setBackground(new java.awt.Color(1, 140, 157));
+        btnMyAccount.setBackground(new java.awt.Color(32, 44, 65));
         btnMyAccount.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnMyAccount.setText("My Account");
         btnMyAccount.setIconTextGap(10);
@@ -91,22 +93,47 @@ public class MyAccountView extends javax.swing.JFrame {
         btnMembers.setBackground(new java.awt.Color(32, 44, 65));
         btnMembers.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnMembers.setText("Members");
+        btnMembers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMembersActionPerformed(evt);
+            }
+        });
 
         btnSupplements.setBackground(new java.awt.Color(32, 44, 65));
         btnSupplements.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSupplements.setText("Supplements");
+        btnSupplements.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSupplementsActionPerformed(evt);
+            }
+        });
 
         btnSuppliers.setBackground(new java.awt.Color(32, 44, 65));
         btnSuppliers.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSuppliers.setText("Suppliers");
+        btnSuppliers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuppliersActionPerformed(evt);
+            }
+        });
 
         btnInventory.setBackground(new java.awt.Color(32, 44, 65));
         btnInventory.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnInventory.setText("Inventory");
+        btnInventory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInventoryActionPerformed(evt);
+            }
+        });
 
         btnLogout.setBackground(new java.awt.Color(32, 44, 65));
         btnLogout.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -420,7 +447,40 @@ public class MyAccountView extends javax.swing.JFrame {
 
     private void btnMyAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMyAccountActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
+        new MyAccountView().setVisible(true);
     }//GEN-LAST:event_btnMyAccountActionPerformed
+
+    private void btnMembersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMembersActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new MembersView().setVisible(true);
+    }//GEN-LAST:event_btnMembersActionPerformed
+
+    private void btnSupplementsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupplementsActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new SupplementsView().setVisible(true);
+    }//GEN-LAST:event_btnSupplementsActionPerformed
+
+    private void btnSuppliersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuppliersActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new SuppliersView().setVisible(true);
+    }//GEN-LAST:event_btnSuppliersActionPerformed
+
+    private void btnInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventoryActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new InventoryView().setVisible(true);
+    }//GEN-LAST:event_btnInventoryActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showConfirmDialog(null, "Confirm Logout?");
+        this.setVisible(false);
+        new LoginView().setVisible(true);
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**
      * @param args the command line arguments
