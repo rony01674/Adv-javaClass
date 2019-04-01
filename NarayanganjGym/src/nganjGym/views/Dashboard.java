@@ -56,6 +56,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         btnMyAccount.setBackground(new java.awt.Color(32, 44, 65));
         btnMyAccount.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnMyAccount.setForeground(new java.awt.Color(51, 255, 255));
         btnMyAccount.setText("My Account");
         btnMyAccount.setIconTextGap(10);
         btnMyAccount.addActionListener(new java.awt.event.ActionListener() {
@@ -102,6 +103,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         btnLogout.setBackground(new java.awt.Color(32, 44, 65));
         btnLogout.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon/iconfinder_icons_exit2_1564506.png"))); // NOI18N
         btnLogout.setText("Logout");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

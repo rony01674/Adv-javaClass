@@ -5,6 +5,11 @@
  */
 package nganjGym.views;
 
+import javax.swing.JOptionPane;
+import nganjGym.dao.RegisterDao;
+import nganjGym.daoImplements.RegisterImplementation;
+import nganjGym.pojo.Register;
+
 /**
  *
  * @author User
@@ -116,6 +121,11 @@ public class RegisterView extends javax.swing.JFrame {
         btnRegister.setBackground(new java.awt.Color(255, 175, 2));
         btnRegister.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnRegister.setText("Register");
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterActionPerformed(evt);
+            }
+        });
 
         jLabel13.setText("Already Have Account?");
 
@@ -243,11 +253,8 @@ public class RegisterView extends javax.swing.JFrame {
                 .addGap(80, 80, 80)
                 .addComponent(jLabel2)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(0, 0, 0))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
         pack();
@@ -258,6 +265,24 @@ public class RegisterView extends javax.swing.JFrame {
         this.setVisible(false);
         new LoginView().setVisible(true);
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        // TODO add your handling code here:
+        String gender = null;
+        if (rMale.isSelected()) {
+            gender = rMale.getText();
+        }
+        if (rFemale.isSelected()) {
+            gender = rFemale.getText();
+        }
+        Register register = new Register(Integer.parseInt(txtInsID.getText()), txtFname.getText(), txtLname.getText(),
+                txtBirthday.getText(), gender, txtAreaAddress.getText(), txtCntcNmbr.getText(),
+                txtEmail.getText(), txtPassword.getText());
+        RegisterDao dao = new RegisterImplementation();
+        dao.save(register);
+        JOptionPane.showMessageDialog(null, "Successfully Registered");
+
+    }//GEN-LAST:event_btnRegisterActionPerformed
 
     /**
      * @param args the command line arguments

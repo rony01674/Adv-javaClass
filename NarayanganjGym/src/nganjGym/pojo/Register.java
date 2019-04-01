@@ -7,7 +7,7 @@ public class Register {
     private int insId;
     private String fname;
     private String lname;
-    private Date birthday;
+    private String birthday;
     private String gender;
     private String address;
     private String contact;
@@ -17,7 +17,7 @@ public class Register {
     public Register() {
     }
 
-    public Register(int insId, String fname, String lname, Date birthday, String gender, String address, String contact, String email, String password) {
+    public Register(int insId, String fname, String lname, String birthday, String gender, String address, String contact, String email, String password) {
         this.insId = insId;
         this.fname = fname;
         this.lname = lname;
@@ -53,11 +53,11 @@ public class Register {
         this.lname = lname;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 

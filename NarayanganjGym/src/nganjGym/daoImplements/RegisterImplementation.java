@@ -5,10 +5,96 @@
  */
 package nganjGym.daoImplements;
 
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import nganjGym.connection.DbConnection;
+import nganjGym.dao.RegisterDao;
+import nganjGym.pojo.Register;
+
 /**
  *
- * @author User
+ * @author Asaduzzaman Rony
  */
-public class RegisterImplementation {
-    
+public class RegisterImplementation implements RegisterDao {
+
+    public static void main(String[] args) {
+        new RegisterImplementation().createTable();
+    }
+
+    Connection connection = DbConnection.getDBConnection();
+
+//    private int insId;
+//    private String fname;
+//    private String lname;
+//    private Date birthday;
+//    private String gender;
+//    private String address;
+//    private String contact;
+//    private String email;
+//    private String password;
+    @Override
+    public void createTable() {
+        String sql = "create table IF NOT EXISTS register(ins_id int (10) auto_increment"
+                + " primary key, first_name varchar (30), last_name varchar (20), birthday varchar (20),"
+                + " gender varchar (8), address varchar (100), contact varchar (14) unique, email varchar (30)"
+                + " unique, password varchar (30))";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.execute();
+            System.out.println("Table Created");
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterImplementation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void save(Register register) {
+        String sql = "insert into register(ins_id, first_name, last_name, birthday, gender, address,"
+                + " contact, email, password) values(?,?,?,?,?,?,?,?,?)";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, register.getInsId());
+            ps.setString(2, register.getFname());
+            ps.setString(3, register.getLname());
+            ps.setString(4, register.getBirthday());
+            ps.setString(5, register.getGender());
+            ps.setString(6, register.getAddress());
+            ps.setString(7, register.getContact());
+            ps.setString(8, register.getEmail());
+            ps.setString(9, register.getPassword());
+            ps.executeUpdate();
+            System.out.println("Insert successfull");
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterImplementation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    @Override
+    public void update(Register register) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Register getUserByID(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Register getUserByLastName(String lname) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void delete(Register register) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

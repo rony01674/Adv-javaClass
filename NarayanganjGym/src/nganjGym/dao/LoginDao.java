@@ -5,10 +5,13 @@
  */
 package nganjGym.dao;
 
+import nganjGym.pojo.Register;
+
 /**
  *
  * @author User
  */
 public interface LoginDao {
-    
+
+    Register findByEmailAndPassword(String email, String password);
 }

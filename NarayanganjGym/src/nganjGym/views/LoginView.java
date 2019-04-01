@@ -5,6 +5,11 @@
  */
 package nganjGym.views;
 
+import javax.swing.JOptionPane;
+import nganjGym.dao.LoginDao;
+import nganjGym.daoImplements.LoginImplementation;
+import nganjGym.pojo.Register;
+
 /**
  *
  * @author User
@@ -37,7 +42,7 @@ public class LoginView extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtInsID = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
         btnLogin = new javax.swing.JButton();
         btnRegister = new javax.swing.JButton();
@@ -59,7 +64,7 @@ public class LoginView extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 175, 2));
-        jLabel4.setText("Instructor ID");
+        jLabel4.setText("Email");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 175, 2));
@@ -96,7 +101,7 @@ public class LoginView extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
-                        .addComponent(txtInsID, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)
@@ -116,7 +121,7 @@ public class LoginView extends javax.swing.JFrame {
                 .addGap(48, 48, 48)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(txtInsID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
@@ -151,9 +156,21 @@ public class LoginView extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        if (txtInsID.getText().length() < 2 || txtPassword.getText().length() < 2) {
-            this.setVisible(false);
-            new MyAccountView().setVisible(true);
+        LoginDao dao = new LoginImplementation();
+        if (txtEmail.getText().trim().length() > 1 || txtPassword.getText().trim().length() > 1) {
+            try {
+                Register r = dao.findByEmailAndPassword(txtEmail.getText().trim(),
+                        txtPassword.getText().trim());
+                if (r.getEmail() != null && r.getPassword() != null) {
+                    this.setVisible(false);
+                    new MyAccountView().setVisible(true);
+                }
+            } catch (NullPointerException e) {
+                JOptionPane.showMessageDialog(null, "Incorrect Email or Password");
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Enter Email & Password");
         }
 
     }//GEN-LAST:event_btnLoginActionPerformed
@@ -203,7 +220,7 @@ public class LoginView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtInsID;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
 }

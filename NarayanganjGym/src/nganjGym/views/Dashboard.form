@@ -126,6 +126,9 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="1"/>
                 </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="33" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="My Account"/>
                 <Property name="iconTextGap" type="int" value="10"/>
               </Properties>
@@ -196,6 +199,9 @@
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="1"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/icon/iconfinder_icons_exit2_1564506.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Logout"/>
               </Properties>

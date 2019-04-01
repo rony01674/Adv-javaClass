@@ -54,7 +54,7 @@ public class MyAccountView extends javax.swing.JFrame {
         rActive = new javax.swing.JRadioButton();
         rInactive = new javax.swing.JRadioButton();
         txtFname = new javax.swing.JTextField();
-        txtLname = new javax.swing.JTextField();
+        txtUserName = new javax.swing.JTextField();
         txtBirthday = new javax.swing.JTextField();
         rMale = new javax.swing.JRadioButton();
         rFemale = new javax.swing.JRadioButton();
@@ -185,11 +185,11 @@ public class MyAccountView extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("First Name");
+        jLabel4.setText("Full Name");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Last Name");
+        jLabel6.setText("User Name");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -282,7 +282,7 @@ public class MyAccountView extends javax.swing.JFrame {
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(txtLname, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
@@ -354,7 +354,7 @@ public class MyAccountView extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
                                 .addComponent(jLabel6))
-                            .addComponent(txtLname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -560,6 +560,6 @@ public class MyAccountView extends javax.swing.JFrame {
     private javax.swing.JTextField txtContactInfo;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFname;
-    private javax.swing.JTextField txtLname;
+    private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 }
