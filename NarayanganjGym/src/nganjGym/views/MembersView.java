@@ -40,12 +40,12 @@ public class MembersView extends javax.swing.JFrame {
         buttonGroup7 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        btnSupplements = new javax.swing.JButton();
-        btnInventory = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
+        btnInventory = new javax.swing.JButton();
+        btnSuppliers = new javax.swing.JButton();
+        btnSupplements = new javax.swing.JButton();
         btnMembers = new javax.swing.JButton();
         btnMyAccount = new javax.swing.JButton();
-        btnSuppliers = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel7 = new javax.swing.JPanel();
@@ -177,26 +177,9 @@ public class MembersView extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(1, 140, 157));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Navigation", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        btnSupplements.setBackground(new java.awt.Color(32, 44, 65));
-        btnSupplements.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnSupplements.setText("Supplements");
-        btnSupplements.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSupplementsActionPerformed(evt);
-            }
-        });
-
-        btnInventory.setBackground(new java.awt.Color(32, 44, 65));
-        btnInventory.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnInventory.setText("Inventory");
-        btnInventory.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInventoryActionPerformed(evt);
-            }
-        });
-
         btnLogout.setBackground(new java.awt.Color(32, 44, 65));
         btnLogout.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logout.png"))); // NOI18N
         btnLogout.setText("Logout");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -204,9 +187,44 @@ public class MembersView extends javax.swing.JFrame {
             }
         });
 
+        btnInventory.setBackground(new java.awt.Color(32, 44, 65));
+        btnInventory.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnInventory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/inventory(1).png"))); // NOI18N
+        btnInventory.setText("Inventory");
+        btnInventory.setIconTextGap(5);
+        btnInventory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInventoryActionPerformed(evt);
+            }
+        });
+
+        btnSuppliers.setBackground(new java.awt.Color(32, 44, 65));
+        btnSuppliers.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSuppliers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/hotel-supplier.png"))); // NOI18N
+        btnSuppliers.setText("Suppliers");
+        btnSuppliers.setIconTextGap(5);
+        btnSuppliers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuppliersActionPerformed(evt);
+            }
+        });
+
+        btnSupplements.setBackground(new java.awt.Color(32, 44, 65));
+        btnSupplements.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSupplements.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/proteins(2).png"))); // NOI18N
+        btnSupplements.setText("Supplements");
+        btnSupplements.setIconTextGap(5);
+        btnSupplements.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSupplementsActionPerformed(evt);
+            }
+        });
+
         btnMembers.setBackground(new java.awt.Color(32, 44, 65));
         btnMembers.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnMembers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/members (3).png"))); // NOI18N
         btnMembers.setText("Members");
+        btnMembers.setIconTextGap(5);
         btnMembers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMembersActionPerformed(evt);
@@ -215,20 +233,12 @@ public class MembersView extends javax.swing.JFrame {
 
         btnMyAccount.setBackground(new java.awt.Color(32, 44, 65));
         btnMyAccount.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnMyAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Myaccount (2).png"))); // NOI18N
         btnMyAccount.setText("My Account");
-        btnMyAccount.setIconTextGap(10);
+        btnMyAccount.setIconTextGap(5);
         btnMyAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMyAccountActionPerformed(evt);
-            }
-        });
-
-        btnSuppliers.setBackground(new java.awt.Color(32, 44, 65));
-        btnSuppliers.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnSuppliers.setText("Suppliers");
-        btnSuppliers.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuppliersActionPerformed(evt);
             }
         });
 
@@ -499,7 +509,7 @@ public class MembersView extends javax.swing.JFrame {
                             .addComponent(btnLoadAllMembers))
                         .addGap(10, 10, 10)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -747,20 +757,20 @@ public class MembersView extends javax.swing.JFrame {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
                     .addComponent(cmbMemberShipPlan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
                     .addComponent(rMonthly)
                     .addComponent(rAnnual))
-                .addGap(25, 25, 25)
+                .addGap(10, 10, 10)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
                     .addComponent(txtMembershipDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGap(10, 10, 10)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23)
                     .addComponent(txtMembershipFee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGap(15, 15, 15)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdate2)
                     .addComponent(btnSave2)
@@ -846,20 +856,20 @@ public class MembersView extends javax.swing.JFrame {
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
                     .addComponent(txtSetNewPlanId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                .addGap(10, 10, 10)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
                     .addComponent(rMonthly2)
                     .addComponent(rAnnual2))
-                .addGap(20, 20, 20)
+                .addGap(10, 10, 10)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26)
                     .addComponent(txtSetDurationPlan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                .addGap(10, 10, 10)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
                     .addComponent(txtSetPlanFee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(10, 10, 10)
                 .addComponent(btnAdd)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -887,7 +897,7 @@ public class MembersView extends javax.swing.JFrame {
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jTabbedPane2.addTab("Membership Plans", jPanel8);
@@ -1010,32 +1020,32 @@ public class MembersView extends javax.swing.JFrame {
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel35)
                     .addComponent(txtMembershipID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(10, 10, 10)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel36)
                     .addComponent(rMonthly3)
                     .addComponent(RAnnual3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(10, 10, 10)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel37)
                     .addComponent(txtMembershipPlan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(10, 10, 10)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel40)
                     .addComponent(txtMembershipDuration2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(10, 10, 10)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel38)
                     .addComponent(jLabel39))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(10, 10, 10)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtStartDate2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEndDate2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(10, 10, 10)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel41)
                     .addComponent(txtMembershipFee2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(btnAddMembership)
                 .addContainerGap())
         );
@@ -1146,7 +1156,7 @@ public class MembersView extends javax.swing.JFrame {
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1175,7 +1185,7 @@ public class MembersView extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(btnPrint)))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
@@ -1217,7 +1227,7 @@ public class MembersView extends javax.swing.JFrame {
                     .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         jTabbedPane2.addTab("Membership Management", jPanel11);
@@ -1249,7 +1259,7 @@ public class MembersView extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1263,7 +1273,7 @@ public class MembersView extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
 
@@ -1274,11 +1284,12 @@ public class MembersView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUpdate2ActionPerformed
 
-    private void btnSupplementsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupplementsActionPerformed
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
+        JOptionPane.showConfirmDialog(null, "Confirm Logout?");
         this.setVisible(false);
-        new SupplementsView().setVisible(true);
-    }//GEN-LAST:event_btnSupplementsActionPerformed
+        new LoginView().setVisible(true);
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventoryActionPerformed
         // TODO add your handling code here:
@@ -1286,12 +1297,17 @@ public class MembersView extends javax.swing.JFrame {
         new InventoryView().setVisible(true);
     }//GEN-LAST:event_btnInventoryActionPerformed
 
-    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+    private void btnSuppliersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuppliersActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showConfirmDialog(null, "Confirm Logout?");
         this.setVisible(false);
-        new LoginView().setVisible(true);
-    }//GEN-LAST:event_btnLogoutActionPerformed
+        new SuppliersView().setVisible(true);
+    }//GEN-LAST:event_btnSuppliersActionPerformed
+
+    private void btnSupplementsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupplementsActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new SupplementsView().setVisible(true);
+    }//GEN-LAST:event_btnSupplementsActionPerformed
 
     private void btnMembersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMembersActionPerformed
         // TODO add your handling code here:
@@ -1304,12 +1320,6 @@ public class MembersView extends javax.swing.JFrame {
         this.setVisible(false);
         new MyAccountView().setVisible(true);
     }//GEN-LAST:event_btnMyAccountActionPerformed
-
-    private void btnSuppliersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuppliersActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-        new SuppliersView().setVisible(true);
-    }//GEN-LAST:event_btnSuppliersActionPerformed
 
     /**
      * @param args the command line arguments

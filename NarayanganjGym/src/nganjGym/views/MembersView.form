@@ -47,8 +47,8 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -79,7 +79,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -138,7 +138,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="btnSupplements">
+            <Component class="javax.swing.JButton" name="btnLogout">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="41" green="2c" red="20" type="rgb"/>
@@ -146,10 +146,13 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Supplements"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/logout.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Logout"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSupplementsActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogoutActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnInventory">
@@ -160,13 +163,17 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="1"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/inventory(1).png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Inventory"/>
+                <Property name="iconTextGap" type="int" value="5"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInventoryActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnLogout">
+            <Component class="javax.swing.JButton" name="btnSuppliers">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="41" green="2c" red="20" type="rgb"/>
@@ -174,10 +181,32 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Logout"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/hotel-supplier.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Suppliers"/>
+                <Property name="iconTextGap" type="int" value="5"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogoutActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSuppliersActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnSupplements">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="41" green="2c" red="20" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="1"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/proteins(2).png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Supplements"/>
+                <Property name="iconTextGap" type="int" value="5"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSupplementsActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnMembers">
@@ -188,7 +217,11 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="1"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/members (3).png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Members"/>
+                <Property name="iconTextGap" type="int" value="5"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMembersActionPerformed"/>
@@ -202,25 +235,14 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="1"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/icon/Myaccount (2).png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="My Account"/>
-                <Property name="iconTextGap" type="int" value="10"/>
+                <Property name="iconTextGap" type="int" value="5"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMyAccountActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnSuppliers">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="41" green="2c" red="20" type="rgb"/>
-                </Property>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="14" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Suppliers"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSuppliersActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -825,7 +847,7 @@
                                           <Component id="jScrollPane3" min="-2" pref="179" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1098,7 +1120,7 @@
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="52" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1163,23 +1185,23 @@
                                       <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="cmbMemberShipPlan" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="rMonthly" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="rAnnual" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtMembershipDuration" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtMembershipFee" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="btnUpdate2" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnSave2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1411,23 +1433,23 @@
                                       <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtSetNewPlanId" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="rMonthly2" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="rAnnual2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtSetDurationPlan" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtSetPlanFee" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Component id="btnAdd" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -1583,7 +1605,7 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="32" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1748,38 +1770,38 @@
                                       <Component id="jLabel35" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtMembershipID" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel36" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="rMonthly3" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="RAnnual3" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtMembershipPlan" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel40" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtMembershipDuration2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel38" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel39" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="txtStartDate2" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtEndDate2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel41" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtMembershipFee2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="11" max="32767" attributes="0"/>
+                                  <EmptySpace pref="10" max="32767" attributes="0"/>
                                   <Component id="btnAddMembership" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
@@ -1980,7 +2002,7 @@
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel28" min="-2" pref="24" max="-2" attributes="0"/>
                                       <Component id="jLabel29" min="-2" pref="24" max="-2" attributes="0"/>
@@ -2016,7 +2038,7 @@
                                           <Component id="btnPrint" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="79" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>

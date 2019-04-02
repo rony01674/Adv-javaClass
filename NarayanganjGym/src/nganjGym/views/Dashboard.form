@@ -3,6 +3,9 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="iconImage" type="java.awt.Image" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+      <Connection code="&#xd;&#xa;new javax.swing.ImageIcon(getClass().getResource(&quot;icon/logout.png&quot;)).getImage()" type="code"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -126,11 +129,10 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="1"/>
                 </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="33" type="rgb"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/icon/Myaccount (2).png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="My Account"/>
-                <Property name="iconTextGap" type="int" value="10"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMyAccountActionPerformed"/>
@@ -143,6 +145,9 @@
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="1"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/icon/members (3).png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Members"/>
               </Properties>
@@ -158,6 +163,9 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="1"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/icon/proteins(2).png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Supplements"/>
               </Properties>
               <Events>
@@ -172,6 +180,9 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="1"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/icon/hotel-supplier.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Suppliers"/>
               </Properties>
               <Events>
@@ -185,6 +196,9 @@
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="1"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/icon/inventory(1).png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Inventory"/>
               </Properties>
@@ -201,7 +215,7 @@
                   <Font name="Tahoma" size="14" style="1"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/icon/iconfinder_icons_exit2_1564506.png"/>
+                  <Image iconType="3" name="/images/icon/Logout (2).png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Logout"/>
               </Properties>

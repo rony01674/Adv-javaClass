@@ -34,12 +34,12 @@ public class MyAccountView extends javax.swing.JFrame {
         buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        btnMyAccount = new javax.swing.JButton();
-        btnMembers = new javax.swing.JButton();
-        btnSupplements = new javax.swing.JButton();
-        btnSuppliers = new javax.swing.JButton();
+        btnLogout1 = new javax.swing.JButton();
         btnInventory = new javax.swing.JButton();
-        btnLogout = new javax.swing.JButton();
+        btnSuppliers = new javax.swing.JButton();
+        btnSupplements = new javax.swing.JButton();
+        btnMembers = new javax.swing.JButton();
+        btnMyAccount = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         lblPhoto = new javax.swing.JLabel();
@@ -80,58 +80,68 @@ public class MyAccountView extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(1, 140, 157));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Navigation", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        btnMyAccount.setBackground(new java.awt.Color(32, 44, 65));
-        btnMyAccount.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnMyAccount.setText("My Account");
-        btnMyAccount.setIconTextGap(10);
-        btnMyAccount.addActionListener(new java.awt.event.ActionListener() {
+        btnLogout1.setBackground(new java.awt.Color(32, 44, 65));
+        btnLogout1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnLogout1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logout.png"))); // NOI18N
+        btnLogout1.setText("Logout");
+        btnLogout1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMyAccountActionPerformed(evt);
-            }
-        });
-
-        btnMembers.setBackground(new java.awt.Color(32, 44, 65));
-        btnMembers.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnMembers.setText("Members");
-        btnMembers.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMembersActionPerformed(evt);
-            }
-        });
-
-        btnSupplements.setBackground(new java.awt.Color(32, 44, 65));
-        btnSupplements.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnSupplements.setText("Supplements");
-        btnSupplements.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSupplementsActionPerformed(evt);
-            }
-        });
-
-        btnSuppliers.setBackground(new java.awt.Color(32, 44, 65));
-        btnSuppliers.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnSuppliers.setText("Suppliers");
-        btnSuppliers.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuppliersActionPerformed(evt);
+                btnLogout1ActionPerformed(evt);
             }
         });
 
         btnInventory.setBackground(new java.awt.Color(32, 44, 65));
         btnInventory.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnInventory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/inventory(1).png"))); // NOI18N
         btnInventory.setText("Inventory");
+        btnInventory.setIconTextGap(5);
         btnInventory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInventoryActionPerformed(evt);
             }
         });
 
-        btnLogout.setBackground(new java.awt.Color(32, 44, 65));
-        btnLogout.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnLogout.setText("Logout");
-        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+        btnSuppliers.setBackground(new java.awt.Color(32, 44, 65));
+        btnSuppliers.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSuppliers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/hotel-supplier.png"))); // NOI18N
+        btnSuppliers.setText("Suppliers");
+        btnSuppliers.setIconTextGap(5);
+        btnSuppliers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogoutActionPerformed(evt);
+                btnSuppliersActionPerformed(evt);
+            }
+        });
+
+        btnSupplements.setBackground(new java.awt.Color(32, 44, 65));
+        btnSupplements.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSupplements.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/proteins(2).png"))); // NOI18N
+        btnSupplements.setText("Supplements");
+        btnSupplements.setIconTextGap(5);
+        btnSupplements.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSupplementsActionPerformed(evt);
+            }
+        });
+
+        btnMembers.setBackground(new java.awt.Color(32, 44, 65));
+        btnMembers.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnMembers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/members (3).png"))); // NOI18N
+        btnMembers.setText("Members");
+        btnMembers.setIconTextGap(5);
+        btnMembers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMembersActionPerformed(evt);
+            }
+        });
+
+        btnMyAccount.setBackground(new java.awt.Color(32, 44, 65));
+        btnMyAccount.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnMyAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Myaccount (2).png"))); // NOI18N
+        btnMyAccount.setText("My Account");
+        btnMyAccount.setIconTextGap(5);
+        btnMyAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMyAccountActionPerformed(evt);
             }
         });
 
@@ -147,7 +157,7 @@ public class MyAccountView extends javax.swing.JFrame {
                     .addComponent(btnSupplements, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSuppliers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnInventory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnLogout1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -164,7 +174,7 @@ public class MyAccountView extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addComponent(btnInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
-                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLogout1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
         );
 
@@ -445,29 +455,12 @@ public class MyAccountView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnMyAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMyAccountActionPerformed
+    private void btnLogout1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout1ActionPerformed
         // TODO add your handling code here:
+        JOptionPane.showConfirmDialog(null, "Confirm Logout?");
         this.setVisible(false);
-        new MyAccountView().setVisible(true);
-    }//GEN-LAST:event_btnMyAccountActionPerformed
-
-    private void btnMembersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMembersActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-        new MembersView().setVisible(true);
-    }//GEN-LAST:event_btnMembersActionPerformed
-
-    private void btnSupplementsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupplementsActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-        new SupplementsView().setVisible(true);
-    }//GEN-LAST:event_btnSupplementsActionPerformed
-
-    private void btnSuppliersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuppliersActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-        new SuppliersView().setVisible(true);
-    }//GEN-LAST:event_btnSuppliersActionPerformed
+        new LoginView().setVisible(true);
+    }//GEN-LAST:event_btnLogout1ActionPerformed
 
     private void btnInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventoryActionPerformed
         // TODO add your handling code here:
@@ -475,12 +468,29 @@ public class MyAccountView extends javax.swing.JFrame {
         new InventoryView().setVisible(true);
     }//GEN-LAST:event_btnInventoryActionPerformed
 
-    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+    private void btnSuppliersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuppliersActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showConfirmDialog(null, "Confirm Logout?");
         this.setVisible(false);
-        new LoginView().setVisible(true);
-    }//GEN-LAST:event_btnLogoutActionPerformed
+        new SuppliersView().setVisible(true);
+    }//GEN-LAST:event_btnSuppliersActionPerformed
+
+    private void btnSupplementsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupplementsActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new SupplementsView().setVisible(true);
+    }//GEN-LAST:event_btnSupplementsActionPerformed
+
+    private void btnMembersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMembersActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new MembersView().setVisible(true);
+    }//GEN-LAST:event_btnMembersActionPerformed
+
+    private void btnMyAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMyAccountActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new MyAccountView().setVisible(true);
+    }//GEN-LAST:event_btnMyAccountActionPerformed
 
     /**
      * @param args the command line arguments
@@ -524,6 +534,7 @@ public class MyAccountView extends javax.swing.JFrame {
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnInventory;
     private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnLogout1;
     private javax.swing.JButton btnMembers;
     private javax.swing.JButton btnMyAccount;
     private javax.swing.JButton btnSupplements;

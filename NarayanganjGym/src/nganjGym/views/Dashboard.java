@@ -47,6 +47,8 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(
+            new javax.swing.ImageIcon(getClass().getResource("icon/logout.png")).getImage());
 
         jPanel1.setBackground(new java.awt.Color(1, 140, 157));
 
@@ -56,9 +58,8 @@ public class Dashboard extends javax.swing.JFrame {
 
         btnMyAccount.setBackground(new java.awt.Color(32, 44, 65));
         btnMyAccount.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnMyAccount.setForeground(new java.awt.Color(51, 255, 255));
+        btnMyAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon/Myaccount (2).png"))); // NOI18N
         btnMyAccount.setText("My Account");
-        btnMyAccount.setIconTextGap(10);
         btnMyAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMyAccountActionPerformed(evt);
@@ -67,6 +68,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         btnMembers.setBackground(new java.awt.Color(32, 44, 65));
         btnMembers.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnMembers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon/members (3).png"))); // NOI18N
         btnMembers.setText("Members");
         btnMembers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +78,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         btnSupplements.setBackground(new java.awt.Color(32, 44, 65));
         btnSupplements.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSupplements.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon/proteins(2).png"))); // NOI18N
         btnSupplements.setText("Supplements");
         btnSupplements.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,6 +88,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         btnSuppliers.setBackground(new java.awt.Color(32, 44, 65));
         btnSuppliers.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSuppliers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon/hotel-supplier.png"))); // NOI18N
         btnSuppliers.setText("Suppliers");
         btnSuppliers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +98,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         btnInventory.setBackground(new java.awt.Color(32, 44, 65));
         btnInventory.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnInventory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon/inventory(1).png"))); // NOI18N
         btnInventory.setText("Inventory");
         btnInventory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,7 +108,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         btnLogout.setBackground(new java.awt.Color(32, 44, 65));
         btnLogout.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon/iconfinder_icons_exit2_1564506.png"))); // NOI18N
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon/Logout (2).png"))); // NOI18N
         btnLogout.setText("Logout");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

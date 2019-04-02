@@ -5,6 +5,9 @@
  */
 package nganjGym.views;
 
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import nganjGym.dao.LoginDao;
 import nganjGym.daoImplements.LoginImplementation;
@@ -24,6 +27,14 @@ public class LoginView extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
+        setIcon();
+
+    }
+
+    private void setIcon() {
+        JFrame frame = new JFrame();
+        frame.setIconImage(Toolkit.getDefaultToolkit().getImage("icon/logout(2).png"));
+
     }
 
     /**
@@ -223,4 +234,5 @@ public class LoginView extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
+
 }

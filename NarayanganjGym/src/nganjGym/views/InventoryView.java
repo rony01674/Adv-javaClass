@@ -5,6 +5,7 @@
  */
 package nganjGym.views;
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,9 +18,11 @@ public class InventoryView extends javax.swing.JFrame {
      * Creates new form Dashboard
      */
     public InventoryView() {
+        super("Inventory");
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
+
     }
 
     /**
@@ -95,8 +98,9 @@ public class InventoryView extends javax.swing.JFrame {
 
         btnMyAccount.setBackground(new java.awt.Color(32, 44, 65));
         btnMyAccount.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnMyAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Myaccount (2).png"))); // NOI18N
         btnMyAccount.setText("My Account");
-        btnMyAccount.setIconTextGap(10);
+        btnMyAccount.setIconTextGap(5);
         btnMyAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMyAccountActionPerformed(evt);
@@ -105,7 +109,9 @@ public class InventoryView extends javax.swing.JFrame {
 
         btnMembers.setBackground(new java.awt.Color(32, 44, 65));
         btnMembers.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnMembers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/members (3).png"))); // NOI18N
         btnMembers.setText("Members");
+        btnMembers.setIconTextGap(5);
         btnMembers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMembersActionPerformed(evt);
@@ -114,7 +120,9 @@ public class InventoryView extends javax.swing.JFrame {
 
         btnSupplements.setBackground(new java.awt.Color(32, 44, 65));
         btnSupplements.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSupplements.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/proteins(2).png"))); // NOI18N
         btnSupplements.setText("Supplements");
+        btnSupplements.setIconTextGap(5);
         btnSupplements.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSupplementsActionPerformed(evt);
@@ -123,7 +131,9 @@ public class InventoryView extends javax.swing.JFrame {
 
         btnSuppliers.setBackground(new java.awt.Color(32, 44, 65));
         btnSuppliers.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSuppliers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/hotel-supplier.png"))); // NOI18N
         btnSuppliers.setText("Suppliers");
+        btnSuppliers.setIconTextGap(5);
         btnSuppliers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSuppliersActionPerformed(evt);
@@ -132,7 +142,9 @@ public class InventoryView extends javax.swing.JFrame {
 
         btnInventory.setBackground(new java.awt.Color(32, 44, 65));
         btnInventory.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnInventory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/inventory(1).png"))); // NOI18N
         btnInventory.setText("Inventory");
+        btnInventory.setIconTextGap(5);
         btnInventory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInventoryActionPerformed(evt);
@@ -141,6 +153,7 @@ public class InventoryView extends javax.swing.JFrame {
 
         btnLogout.setBackground(new java.awt.Color(32, 44, 65));
         btnLogout.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logout.png"))); // NOI18N
         btnLogout.setText("Logout");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
