@@ -34,12 +34,12 @@ public class MyAccountView extends javax.swing.JFrame {
         buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        btnLogout1 = new javax.swing.JButton();
         btnInventory = new javax.swing.JButton();
         btnSuppliers = new javax.swing.JButton();
         btnSupplements = new javax.swing.JButton();
         btnMembers = new javax.swing.JButton();
         btnMyAccount = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         lblPhoto = new javax.swing.JLabel();
@@ -55,7 +55,6 @@ public class MyAccountView extends javax.swing.JFrame {
         rInactive = new javax.swing.JRadioButton();
         txtFname = new javax.swing.JTextField();
         txtUserName = new javax.swing.JTextField();
-        txtBirthday = new javax.swing.JTextField();
         rMale = new javax.swing.JRadioButton();
         rFemale = new javax.swing.JRadioButton();
         txtBloodGroup = new javax.swing.JTextField();
@@ -72,6 +71,7 @@ public class MyAccountView extends javax.swing.JFrame {
         btnEdit = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
+        dcBirthday = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,16 +79,6 @@ public class MyAccountView extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(1, 140, 157));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Navigation", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
-
-        btnLogout1.setBackground(new java.awt.Color(32, 44, 65));
-        btnLogout1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnLogout1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logout.png"))); // NOI18N
-        btnLogout1.setText("Logout");
-        btnLogout1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogout1ActionPerformed(evt);
-            }
-        });
 
         btnInventory.setBackground(new java.awt.Color(32, 44, 65));
         btnInventory.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -145,6 +135,16 @@ public class MyAccountView extends javax.swing.JFrame {
             }
         });
 
+        btnLogout.setBackground(new java.awt.Color(32, 44, 65));
+        btnLogout.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logout.png"))); // NOI18N
+        btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -157,7 +157,7 @@ public class MyAccountView extends javax.swing.JFrame {
                     .addComponent(btnSupplements, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSuppliers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnInventory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLogout1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -173,9 +173,9 @@ public class MyAccountView extends javax.swing.JFrame {
                 .addComponent(btnSuppliers, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
                 .addComponent(btnInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(btnLogout1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                .addGap(40, 40, 40)
+                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
 
         jPanel3.setBackground(new java.awt.Color(32, 44, 65));
@@ -283,7 +283,7 @@ public class MyAccountView extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(lblPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(30, 30, 30)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel3)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -296,7 +296,7 @@ public class MyAccountView extends javax.swing.JFrame {
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(txtBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(dcBirthday, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
@@ -360,18 +360,14 @@ public class MyAccountView extends javax.swing.JFrame {
                                 .addComponent(jLabel4))
                             .addComponent(txtFname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(jLabel6))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
                             .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addGap(20, 20, 20)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(jLabel7))
-                            .addComponent(txtBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addComponent(jLabel7)
+                            .addComponent(dcBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(16, 16, 16)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(3, 3, 3)
@@ -455,13 +451,6 @@ public class MyAccountView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnLogout1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogout1ActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showConfirmDialog(null, "Confirm Logout?");
-        this.setVisible(false);
-        new LoginView().setVisible(true);
-    }//GEN-LAST:event_btnLogout1ActionPerformed
-
     private void btnInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventoryActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
@@ -491,6 +480,21 @@ public class MyAccountView extends javax.swing.JFrame {
         this.setVisible(false);
         new MyAccountView().setVisible(true);
     }//GEN-LAST:event_btnMyAccountActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+        int response = JOptionPane.showConfirmDialog(this, "Confirm Logout?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (response == JOptionPane.YES_OPTION) {
+            this.setVisible(false);
+            new LoginView().setVisible(true);
+        } else {
+
+        }
+        //        JOptionPane.showConfirmDialog(rootPane, "Confirm Logout?");
+        //        this.setVisible(false);
+        //        new LoginView().setVisible(true);
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -534,7 +538,6 @@ public class MyAccountView extends javax.swing.JFrame {
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnInventory;
     private javax.swing.JButton btnLogout;
-    private javax.swing.JButton btnLogout1;
     private javax.swing.JButton btnMembers;
     private javax.swing.JButton btnMyAccount;
     private javax.swing.JButton btnSupplements;
@@ -543,6 +546,7 @@ public class MyAccountView extends javax.swing.JFrame {
     private javax.swing.JButton btnUploadPhoto;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private com.toedter.calendar.JDateChooser dcBirthday;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -566,7 +570,6 @@ public class MyAccountView extends javax.swing.JFrame {
     private javax.swing.JRadioButton rInactive;
     private javax.swing.JRadioButton rMale;
     private javax.swing.JTextArea txtAreaAddress;
-    private javax.swing.JTextField txtBirthday;
     private javax.swing.JTextField txtBloodGroup;
     private javax.swing.JTextField txtContactInfo;
     private javax.swing.JTextField txtEmail;

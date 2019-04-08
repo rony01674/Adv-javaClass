@@ -51,7 +51,6 @@ public class RegisterView extends javax.swing.JFrame {
         txtInsID = new javax.swing.JTextField();
         txtFname = new javax.swing.JTextField();
         txtLname = new javax.swing.JTextField();
-        txtBirthday = new javax.swing.JTextField();
         rMale = new javax.swing.JRadioButton();
         rFemale = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -62,6 +61,7 @@ public class RegisterView extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
         txtPassword = new javax.swing.JPasswordField();
+        txtBirthday = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -159,6 +159,7 @@ public class RegisterView extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(btnLogin))
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(txtBirthday, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                             .addComponent(rMale, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -167,7 +168,6 @@ public class RegisterView extends javax.swing.JFrame {
                                         .addComponent(txtFname, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(txtInsID, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(txtLname, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtBirthday, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(txtCntcNmbr, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(btnRegister, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -275,12 +275,18 @@ public class RegisterView extends javax.swing.JFrame {
         if (rFemale.isSelected()) {
             gender = rFemale.getText();
         }
-        Register register = new Register(Integer.parseInt(txtInsID.getText()), txtFname.getText(), txtLname.getText(),
-                txtBirthday.getText(), gender, txtAreaAddress.getText(), txtCntcNmbr.getText(),
-                txtEmail.getText(), txtPassword.getText());
-        RegisterDao dao = new RegisterImplementation();
-        dao.save(register);
-        JOptionPane.showMessageDialog(null, "Successfully Registered");
+        try {
+            Register register = new Register(Integer.parseInt(txtInsID.getText()), txtFname.getText(), txtLname.getText(),
+                    txtBirthday.getText(), gender, txtAreaAddress.getText(), txtCntcNmbr.getText(),
+                    txtEmail.getText(), txtPassword.getText());
+            RegisterDao dao = new RegisterImplementation();
+            dao.save(register);
+            JOptionPane.showMessageDialog(null, "Successfully Registered");
+        } catch (NumberFormatException e) {
+
+        } catch (NullPointerException e) {
+        }
+
 
     }//GEN-LAST:event_btnRegisterActionPerformed
 

@@ -85,7 +85,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btnMyAccount" alignment="0" min="-2" pref="139" max="-2" attributes="0"/>
@@ -93,7 +93,7 @@
                           <Component id="btnSupplements" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnSuppliers" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnInventory" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnLogout" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnLogout" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -112,9 +112,9 @@
                       <Component id="btnSuppliers" min="-2" pref="41" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       <Component id="btnInventory" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="btnLogout" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

@@ -32,12 +32,12 @@ public class SupplementsView extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        btnLogout = new javax.swing.JButton();
         btnInventory = new javax.swing.JButton();
         btnSuppliers = new javax.swing.JButton();
         btnSupplements = new javax.swing.JButton();
         btnMembers = new javax.swing.JButton();
         btnMyAccount = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -84,16 +84,6 @@ public class SupplementsView extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(1, 140, 157));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Navigation", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14), new java.awt.Color(255, 255, 255))); // NOI18N
-
-        btnLogout.setBackground(new java.awt.Color(32, 44, 65));
-        btnLogout.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logout.png"))); // NOI18N
-        btnLogout.setText("Logout");
-        btnLogout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogoutActionPerformed(evt);
-            }
-        });
 
         btnInventory.setBackground(new java.awt.Color(32, 44, 65));
         btnInventory.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -150,6 +140,16 @@ public class SupplementsView extends javax.swing.JFrame {
             }
         });
 
+        btnLogout.setBackground(new java.awt.Color(32, 44, 65));
+        btnLogout.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logout.png"))); // NOI18N
+        btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -178,9 +178,9 @@ public class SupplementsView extends javax.swing.JFrame {
                 .addComponent(btnSuppliers, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
                 .addComponent(btnInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addGap(40, 40, 40)
                 .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                .addGap(34, 34, 34))
         );
 
         jPanel3.setBackground(new java.awt.Color(32, 44, 65));
@@ -392,13 +392,6 @@ public class SupplementsView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField9ActionPerformed
 
-    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showConfirmDialog(null, "Confirm Logout?");
-        this.setVisible(false);
-        new LoginView().setVisible(true);
-    }//GEN-LAST:event_btnLogoutActionPerformed
-
     private void btnInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventoryActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
@@ -428,6 +421,21 @@ public class SupplementsView extends javax.swing.JFrame {
         this.setVisible(false);
         new MyAccountView().setVisible(true);
     }//GEN-LAST:event_btnMyAccountActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+        int response = JOptionPane.showConfirmDialog(this, "Confirm Logout?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (response == JOptionPane.YES_OPTION) {
+            this.setVisible(false);
+            new LoginView().setVisible(true);
+        } else {
+
+        }
+        //        JOptionPane.showConfirmDialog(rootPane, "Confirm Logout?");
+        //        this.setVisible(false);
+        //        new LoginView().setVisible(true);
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**
      * @param args the command line arguments

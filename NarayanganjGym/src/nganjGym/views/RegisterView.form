@@ -103,6 +103,7 @@
                                           <Component id="btnLogin" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="txtBirthday" alignment="0" max="32767" attributes="0"/>
                                           <Component id="txtPassword" alignment="0" max="32767" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="rMale" min="-2" pref="60" max="-2" attributes="0"/>
@@ -112,7 +113,6 @@
                                           <Component id="txtFname" alignment="0" max="32767" attributes="0"/>
                                           <Component id="txtInsID" alignment="0" max="32767" attributes="0"/>
                                           <Component id="txtLname" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txtBirthday" alignment="0" max="32767" attributes="0"/>
                                           <Component id="txtCntcNmbr" alignment="0" max="32767" attributes="0"/>
                                           <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
                                           <Component id="btnRegister" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
@@ -290,8 +290,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtLname">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtBirthday">
-        </Component>
         <Component class="javax.swing.JRadioButton" name="rMale">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -370,6 +368,8 @@
           </Events>
         </Component>
         <Component class="javax.swing.JPasswordField" name="txtPassword">
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtBirthday">
         </Component>
       </SubComponents>
     </Container>

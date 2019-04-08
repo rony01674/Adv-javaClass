@@ -173,7 +173,7 @@ public class InventoryView extends javax.swing.JFrame {
                     .addComponent(btnSupplements, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSuppliers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnInventory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnLogout, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -189,9 +189,9 @@ public class InventoryView extends javax.swing.JFrame {
                 .addComponent(btnSuppliers, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
                 .addComponent(btnInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addGap(40, 40, 40)
                 .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                .addGap(34, 34, 34))
         );
 
         jPanel3.setBackground(new java.awt.Color(32, 44, 65));
@@ -614,9 +614,17 @@ public class InventoryView extends javax.swing.JFrame {
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showConfirmDialog(null, "Confirm Logout?");
-        this.setVisible(false);
-        new LoginView().setVisible(true);
+        int response = JOptionPane.showConfirmDialog(this, "Confirm Logout?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (response == JOptionPane.YES_OPTION) {
+            this.setVisible(false);
+            new LoginView().setVisible(true);
+        } else {
+
+        }
+        //        JOptionPane.showConfirmDialog(rootPane, "Confirm Logout?");
+        //        this.setVisible(false);
+        //        new LoginView().setVisible(true);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**
