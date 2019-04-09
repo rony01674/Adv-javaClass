@@ -1,5 +1,7 @@
 package nganjGym.dao;
 
+import java.util.List;
+import nganjGym.pojo.Login;
 import nganjGym.pojo.MyAccount;
 
 /**
@@ -14,9 +16,9 @@ public interface MyAccountDao {
 
     void update(MyAccount myAccount);
 
-    MyAccount getUserByID(int id);
+    MyAccount getUserByID(String insID);
 
-    MyAccount getUserByUserName(String userName);
+    void delete(String insID);
 
-    void delete(int id);
+    List<MyAccount> getList();
 }

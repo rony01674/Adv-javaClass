@@ -276,7 +276,7 @@ public class RegisterView extends javax.swing.JFrame {
             gender = rFemale.getText();
         }
         try {
-            Register register = new Register(Integer.parseInt(txtInsID.getText()), txtFname.getText(), txtLname.getText(),
+            Register register = new Register(txtInsID.getText(), txtFname.getText(), txtLname.getText(),
                     txtBirthday.getText(), gender, txtAreaAddress.getText(), txtCntcNmbr.getText(),
                     txtEmail.getText(), txtPassword.getText());
             RegisterDao dao = new RegisterImplementation();

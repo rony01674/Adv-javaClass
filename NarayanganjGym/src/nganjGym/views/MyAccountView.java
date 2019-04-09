@@ -5,7 +5,11 @@
  */
 package nganjGym.views;
 
+import java.util.List;
 import javax.swing.JOptionPane;
+import nganjGym.dao.RegisterDao;
+import nganjGym.daoImplements.RegisterImplementation;
+import nganjGym.pojo.Register;
 
 /**
  *
@@ -19,6 +23,7 @@ public class MyAccountView extends javax.swing.JFrame {
     public MyAccountView() {
         initComponents();
         setLocationRelativeTo(null);
+        displayDataIntoLabel();
     }
 
     /**
@@ -71,7 +76,7 @@ public class MyAccountView extends javax.swing.JFrame {
         btnEdit = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
-        dcBirthday = new com.toedter.calendar.JDateChooser();
+        txtBirthday = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -216,6 +221,7 @@ public class MyAccountView extends javax.swing.JFrame {
         rActive.setBackground(new java.awt.Color(1, 140, 157));
         buttonGroup1.add(rActive);
         rActive.setForeground(new java.awt.Color(255, 255, 255));
+        rActive.setSelected(true);
         rActive.setText("Active");
 
         rInactive.setBackground(new java.awt.Color(1, 140, 157));
@@ -226,12 +232,15 @@ public class MyAccountView extends javax.swing.JFrame {
         rMale.setBackground(new java.awt.Color(32, 44, 65));
         buttonGroup2.add(rMale);
         rMale.setForeground(new java.awt.Color(255, 255, 255));
+        rMale.setSelected(true);
         rMale.setText("Male");
 
         rFemale.setBackground(new java.awt.Color(32, 44, 65));
         buttonGroup2.add(rFemale);
         rFemale.setForeground(new java.awt.Color(255, 255, 255));
         rFemale.setText("Female");
+
+        txtBloodGroup.setText("O+");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -275,9 +284,7 @@ public class MyAccountView extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jSeparator1)
-                        .addContainerGap())
+                    .addComponent(jSeparator1)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -296,7 +303,7 @@ public class MyAccountView extends javax.swing.JFrame {
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(dcBirthday, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(txtBirthday))
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
@@ -308,8 +315,8 @@ public class MyAccountView extends javax.swing.JFrame {
                                     .addComponent(jLabel10)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jScrollPane1))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel13)
                                         .addGap(18, 18, 18)
@@ -363,11 +370,11 @@ public class MyAccountView extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(dcBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
+                            .addComponent(txtBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(3, 3, 3)
@@ -424,7 +431,8 @@ public class MyAccountView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -441,7 +449,7 @@ public class MyAccountView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -450,6 +458,29 @@ public class MyAccountView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    public void displayDataIntoLabel() {
+        RegisterDao dao = new RegisterImplementation();
+        List<Register> list = dao.getList();
+        Object[] cols = new Object[7];
+        for (int i = 0; i < list.size(); i++) {
+            cols[0] = list.get(i).getInsId();
+            cols[1] = list.get(i).getFname();
+            cols[2] = list.get(i).getLname();
+            cols[3] = list.get(i).getBirthday();
+            cols[4] = list.get(i).getAddress();
+            cols[5] = list.get(i).getContact();
+            cols[6] = list.get(i).getEmail();
+            lblInsId.setText((String) cols[0]);
+            txtFname.setText((String) cols[1]);
+            txtUserName.setText((String) cols[2]);
+            txtBirthday.setText((String) cols[3]);
+            txtAreaAddress.setText((String) cols[4]);
+            txtContactInfo.setText((String) cols[5]);
+            txtEmail.setText((String) cols[6]);
+        }
+
+    }
 
     private void btnInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventoryActionPerformed
         // TODO add your handling code here:
@@ -546,7 +577,6 @@ public class MyAccountView extends javax.swing.JFrame {
     private javax.swing.JButton btnUploadPhoto;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private com.toedter.calendar.JDateChooser dcBirthday;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -570,6 +600,7 @@ public class MyAccountView extends javax.swing.JFrame {
     private javax.swing.JRadioButton rInactive;
     private javax.swing.JRadioButton rMale;
     private javax.swing.JTextArea txtAreaAddress;
+    private javax.swing.JTextField txtBirthday;
     private javax.swing.JTextField txtBloodGroup;
     private javax.swing.JTextField txtContactInfo;
     private javax.swing.JTextField txtEmail;

@@ -8,7 +8,10 @@ package nganjGym.daoImplements;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import nganjGym.connection.DbConnection;
@@ -38,7 +41,7 @@ public class RegisterImplementation implements RegisterDao {
 //    private String password;
     @Override
     public void createTable() {
-        String sql = "create table IF NOT EXISTS register(ins_id int (10) auto_increment"
+        String sql = "create table IF NOT EXISTS register(ins_id varchar(10)"
                 + " primary key, first_name varchar (30), last_name varchar (20), birthday varchar (20),"
                 + " gender varchar (8), address varchar (100), contact varchar (14) unique, email varchar (30)"
                 + " unique, password varchar (30))";
@@ -59,7 +62,7 @@ public class RegisterImplementation implements RegisterDao {
 
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, register.getInsId());
+            ps.setString(1, register.getInsId());
             ps.setString(2, register.getFname());
             ps.setString(3, register.getLname());
             ps.setString(4, register.getBirthday());
@@ -95,6 +98,26 @@ public class RegisterImplementation implements RegisterDao {
     @Override
     public void delete(Register register) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Register> getList() {
+        List<Register> list = new ArrayList<>();
+        String sql = "select * from register";
+        try {
+            PreparedStatement pstm = connection.prepareStatement(sql);
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()) {
+                Register register = new Register(rs.getString(1), rs.getString(2),
+                        rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
+                        rs.getString(7), rs.getString(8), rs.getString(9));
+                list.add(register);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterImplementation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
     }
 
 }

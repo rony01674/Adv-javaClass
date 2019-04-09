@@ -5,6 +5,7 @@
  */
 package nganjGym.dao;
 
+import java.util.List;
 import nganjGym.pojo.Register;
 
 /**
@@ -24,4 +25,6 @@ public interface RegisterDao {
     Register getUserByLastName(String lname);
 
     void delete(Register register);
+
+    List<Register> getList();
 }

@@ -1,10 +1,8 @@
 package nganjGym.pojo;
 
-import java.util.Date;
-
 public class Register {
 
-    private int insId;
+    private String insId;
     private String fname;
     private String lname;
     private String birthday;
@@ -17,7 +15,7 @@ public class Register {
     public Register() {
     }
 
-    public Register(int insId, String fname, String lname, String birthday, String gender, String address, String contact, String email, String password) {
+    public Register(String insId, String fname, String lname, String birthday, String gender, String address, String contact, String email, String password) {
         this.insId = insId;
         this.fname = fname;
         this.lname = lname;
@@ -29,11 +27,11 @@ public class Register {
         this.password = password;
     }
 
-    public int getInsId() {
+    public String getInsId() {
         return insId;
     }
 
-    public void setInsId(int insId) {
+    public void setInsId(String insId) {
         this.insId = insId;
     }
 

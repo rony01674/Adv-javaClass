@@ -13,5 +13,5 @@ import nganjGym.pojo.Register;
  */
 public interface LoginDao {
 
-    Register findByEmailAndPassword(String email, String password);
+    Register findByInsIDAndPassword(String insId, String password);
 }

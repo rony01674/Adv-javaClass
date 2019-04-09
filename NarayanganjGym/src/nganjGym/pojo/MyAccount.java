@@ -1,50 +1,39 @@
 package nganjGym.pojo;
 
-import java.util.Date;
-
 public class MyAccount {
 
-    private int insID;
+    private String insID;
     private String fname;
-    private String userName;
-    private Date birthday;
+    private String lname;
+    private String birthday;
     private String gender;
     private String bloodGroup;
     private String address;
     private String contact;
     private String email;
+    private String password;
 
     public MyAccount() {
     }
 
-    public MyAccount(String fname, String userName, Date birthday, String gender, String bloodGroup, String address, String contact, String email) {
-        this.fname = fname;
-        this.userName = userName;
-        this.birthday = birthday;
-        this.gender = gender;
-        this.bloodGroup = bloodGroup;
-        this.address = address;
-        this.contact = contact;
-        this.email = email;
-    }
-
-    public MyAccount(int insID, String fname, String userName, Date birthday, String gender, String bloodGroup, String address, String contact, String email) {
+    public MyAccount(String insID, String fname, String lname, String birthday, String gender, String bloodGroup, String address, String contact, String email, String password) {
         this.insID = insID;
         this.fname = fname;
-        this.userName = userName;
+        this.lname = lname;
         this.birthday = birthday;
         this.gender = gender;
         this.bloodGroup = bloodGroup;
         this.address = address;
         this.contact = contact;
         this.email = email;
+        this.password = password;
     }
 
-    public int getInsID() {
+    public String getInsID() {
         return insID;
     }
 
-    public void setInsID(int insID) {
+    public void setInsID(String insID) {
         this.insID = insID;
     }
 
@@ -57,18 +46,18 @@ public class MyAccount {
     }
 
     public String getLname() {
-        return userName;
+        return lname;
     }
 
     public void setLname(String lname) {
-        this.userName = lname;
+        this.lname = lname;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
@@ -110,6 +99,14 @@ public class MyAccount {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 }

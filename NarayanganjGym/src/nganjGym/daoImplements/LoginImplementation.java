@@ -24,17 +24,17 @@ public class LoginImplementation implements LoginDao {
     Connection connection = DbConnection.getDBConnection();
 
     @Override
-    public Register findByEmailAndPassword(String email, String password) {
+    public Register findByInsIDAndPassword(String insID, String password) {
         Register register = null;
-        String sql = "select * from register where email=? and password=?";
+        String sql = "select * from register where ins_id=? and password=?";
 
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, email);
+            ps.setString(1, insID);
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                register = new Register(rs.getInt(1), rs.getString(2), rs.getString(3),
+                register = new Register(rs.getString(1), rs.getString(2), rs.getString(3),
                         rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),
                         rs.getString(8), rs.getString(9));
             }
