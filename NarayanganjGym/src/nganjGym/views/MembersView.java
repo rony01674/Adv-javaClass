@@ -5,7 +5,15 @@
  */
 package nganjGym.views;
 
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import nganjGym.dao.MembersManagementDao;
+import nganjGym.dao.MembershipPlanDao;
+import nganjGym.daoImplements.MManagementDaoImplement;
+import nganjGym.daoImplements.MembershipPlanDaoImplementation;
+import nganjGym.pojo.MembersManagement;
+import nganjGym.pojo.MembershipPlan;
 
 /**
  *
@@ -21,6 +29,8 @@ public class MembersView extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
+        displayMembershipPlanIntoTable();
+        displayPlanAtComboBox();
     }
 
     /**
@@ -52,15 +62,12 @@ public class MembersView extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         lblPhoto = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        lblMemberId = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        rActive = new javax.swing.JRadioButton();
-        rInactive = new javax.swing.JRadioButton();
         txtFname = new javax.swing.JTextField();
         txtLname = new javax.swing.JTextField();
         txtBirthday = new javax.swing.JTextField();
@@ -78,16 +85,13 @@ public class MembersView extends javax.swing.JFrame {
         btnUploadPhoto = new javax.swing.JButton();
         btnRegister = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
-        btnCancel = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtHCondition = new javax.swing.JTextArea();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblRegisteredMembers = new javax.swing.JTable();
-        txtSearchMember = new javax.swing.JTextField();
-        btnByID = new javax.swing.JRadioButton();
-        btnByName = new javax.swing.JRadioButton();
         btnLoadAllMembers = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
@@ -100,6 +104,9 @@ public class MembersView extends javax.swing.JFrame {
         txtMemberId = new javax.swing.JTextField();
         txtStartDate = new javax.swing.JTextField();
         txtEndDate = new javax.swing.JTextField();
+        btnByMemberID = new javax.swing.JButton();
+        btnByMemberName = new javax.swing.JButton();
+        txtMemberID = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
@@ -121,16 +128,13 @@ public class MembersView extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
-        txtSetNewPlanId = new javax.swing.JTextField();
+        txtPlanID = new javax.swing.JTextField();
         rMonthly2 = new javax.swing.JRadioButton();
         rAnnual2 = new javax.swing.JRadioButton();
-        txtSetDurationPlan = new javax.swing.JTextField();
-        txtSetPlanFee = new javax.swing.JTextField();
+        txtPlanDuration = new javax.swing.JTextField();
+        txtPlanFee = new javax.swing.JTextField();
         btnAdd = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
-        txtSearchMember2 = new javax.swing.JTextField();
-        rByMemberId = new javax.swing.JRadioButton();
-        rByMemberName = new javax.swing.JRadioButton();
         btnLoadAllMembers2 = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         tblMembershipManagement = new javax.swing.JTable();
@@ -170,6 +174,8 @@ public class MembersView extends javax.swing.JFrame {
         jLabel50 = new javax.swing.JLabel();
         jLabel51 = new javax.swing.JLabel();
         btnPrint = new javax.swing.JButton();
+        btnByMemberID1 = new javax.swing.JButton();
+        btnByMemberName1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -289,9 +295,6 @@ public class MembersView extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Member ID");
 
-        lblMemberId.setForeground(new java.awt.Color(255, 255, 255));
-        lblMemberId.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Personal Information");
@@ -315,16 +318,6 @@ public class MembersView extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Blood Group");
-
-        rActive.setBackground(new java.awt.Color(1, 140, 157));
-        buttonGroup1.add(rActive);
-        rActive.setForeground(new java.awt.Color(255, 255, 255));
-        rActive.setText("Active");
-
-        rInactive.setBackground(new java.awt.Color(1, 140, 157));
-        buttonGroup1.add(rInactive);
-        rInactive.setForeground(new java.awt.Color(255, 255, 255));
-        rInactive.setText("Inactive");
 
         rMale.setBackground(new java.awt.Color(32, 44, 65));
         buttonGroup2.add(rMale);
@@ -361,12 +354,17 @@ public class MembersView extends javax.swing.JFrame {
 
         btnRegister.setBackground(new java.awt.Color(32, 44, 65));
         btnRegister.setText("Register");
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterActionPerformed(evt);
+            }
+        });
 
         btnUpdate.setBackground(new java.awt.Color(32, 44, 65));
         btnUpdate.setText("Update");
 
-        btnCancel.setBackground(new java.awt.Color(32, 44, 65));
-        btnCancel.setText("Cancel");
+        btnDelete.setBackground(new java.awt.Color(32, 44, 65));
+        btnDelete.setText("Delete");
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
@@ -389,20 +387,12 @@ public class MembersView extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(tblRegisteredMembers);
 
-        txtSearchMember.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
-        txtSearchMember.setText("Search Member");
-
-        btnByID.setBackground(new java.awt.Color(32, 44, 65));
-        buttonGroup3.add(btnByID);
-        btnByID.setForeground(new java.awt.Color(255, 255, 255));
-        btnByID.setText("By Member ID");
-
-        btnByName.setBackground(new java.awt.Color(32, 44, 65));
-        buttonGroup3.add(btnByName);
-        btnByName.setForeground(new java.awt.Color(255, 255, 255));
-        btnByName.setText("By Member Name");
-
         btnLoadAllMembers.setText("Load All Members");
+        btnLoadAllMembers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoadAllMembersActionPerformed(evt);
+            }
+        });
 
         jPanel5.setBackground(new java.awt.Color(32, 44, 65));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Membership Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
@@ -439,7 +429,7 @@ public class MembersView extends javax.swing.JFrame {
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtMemberStatus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMemberType, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -474,6 +464,10 @@ public class MembersView extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btnByMemberID.setText("By Member ID");
+
+        btnByMemberName.setText("By Member Name");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -481,15 +475,13 @@ public class MembersView extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane3)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(txtSearchMember, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnByID)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnByName)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnLoadAllMembers)))
+                        .addComponent(btnByMemberID)
+                        .addGap(76, 76, 76)
+                        .addComponent(btnByMemberName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLoadAllMembers, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -504,10 +496,9 @@ public class MembersView extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtSearchMember, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnByID)
-                            .addComponent(btnByName)
-                            .addComponent(btnLoadAllMembers))
+                            .addComponent(btnLoadAllMembers)
+                            .addComponent(btnByMemberID)
+                            .addComponent(btnByMemberName))
                         .addGap(10, 10, 10)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -518,81 +509,75 @@ public class MembersView extends javax.swing.JFrame {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(lblPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtFname, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtLname, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(rMale)
-                                .addGap(0, 0, 0)
-                                .addComponent(rFemale))
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtBloodGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(93, 93, 93)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblMemberId, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(rActive)
-                                .addGap(35, 35, 35)
-                                .addComponent(rInactive))
-                            .addComponent(btnUploadPhoto))
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addGap(128, 128, 128)
-                                .addComponent(btnRegister)
-                                .addGap(20, 20, 20)
-                                .addComponent(btnUpdate)
-                                .addGap(20, 20, 20)
-                                .addComponent(btnCancel))
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addGap(93, 93, 93)
-                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel7Layout.createSequentialGroup()
-                                        .addComponent(jLabel13)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtContactInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel7Layout.createSequentialGroup()
-                                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(20, 20, 20))
+                .addGap(8, 8, 8)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel7Layout.createSequentialGroup()
+                            .addComponent(lblPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(30, 30, 30)
+                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3)
+                                .addGroup(jPanel7Layout.createSequentialGroup()
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtFname, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel7Layout.createSequentialGroup()
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtLname, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel7Layout.createSequentialGroup()
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel7Layout.createSequentialGroup()
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(rMale)
+                                    .addGap(0, 0, 0)
+                                    .addComponent(rFemale))
+                                .addGroup(jPanel7Layout.createSequentialGroup()
+                                    .addComponent(jLabel9)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtBloodGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(93, 93, 93)
+                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel10)
+                                .addGroup(jPanel7Layout.createSequentialGroup()
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel7Layout.createSequentialGroup()
+                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnUploadPhoto)
+                                .addGroup(jPanel7Layout.createSequentialGroup()
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtMemberID, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(30, 30, 30)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel7Layout.createSequentialGroup()
+                                    .addGap(128, 128, 128)
+                                    .addComponent(btnRegister)
+                                    .addGap(20, 20, 20)
+                                    .addComponent(btnUpdate)
+                                    .addGap(20, 20, 20)
+                                    .addComponent(btnDelete))
+                                .addGroup(jPanel7Layout.createSequentialGroup()
+                                    .addGap(93, 93, 93)
+                                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel7Layout.createSequentialGroup()
+                                            .addComponent(jLabel13)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(txtContactInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel7Layout.createSequentialGroup()
+                                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
+                .addGap(52, 52, 52))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -648,14 +633,10 @@ public class MembersView extends javax.swing.JFrame {
                 .addGap(4, 4, 4)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblMemberId, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(7, 7, 7)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rActive)
-                            .addComponent(rInactive))
-                        .addGap(7, 7, 7)
+                            .addComponent(txtMemberID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addComponent(btnUploadPhoto))
                     .addComponent(jLabel11)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -667,7 +648,7 @@ public class MembersView extends javax.swing.JFrame {
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnRegister)
                             .addComponent(btnUpdate)
-                            .addComponent(btnCancel))))
+                            .addComponent(btnDelete))))
                 .addGap(5, 5, 5)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -695,8 +676,6 @@ public class MembersView extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setText("Membership Fee");
-
-        cmbMemberShipPlan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         rMonthly.setBackground(new java.awt.Color(32, 44, 65));
         buttonGroup4.add(rMonthly);
@@ -787,6 +766,11 @@ public class MembersView extends javax.swing.JFrame {
                 "Membership Plan ID", "Membership Type", "Membership Duration", "Membership Price"
             }
         ));
+        tblMembershipPlans.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblMembershipPlansMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(tblMembershipPlans);
 
         jPanel10.setBackground(new java.awt.Color(32, 44, 65));
@@ -819,6 +803,11 @@ public class MembersView extends javax.swing.JFrame {
         rAnnual2.setText("Annual");
 
         btnAdd.setText("Add");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -834,8 +823,8 @@ public class MembersView extends javax.swing.JFrame {
                             .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtSetNewPlanId)
-                            .addComponent(txtSetPlanFee)
+                            .addComponent(txtPlanID)
+                            .addComponent(txtPlanFee)
                             .addGroup(jPanel10Layout.createSequentialGroup()
                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnAdd)
@@ -847,7 +836,7 @@ public class MembersView extends javax.swing.JFrame {
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(txtSetDurationPlan)))
+                        .addComponent(txtPlanDuration)))
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
@@ -856,7 +845,7 @@ public class MembersView extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
-                    .addComponent(txtSetNewPlanId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPlanID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
@@ -865,11 +854,11 @@ public class MembersView extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26)
-                    .addComponent(txtSetDurationPlan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPlanDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
-                    .addComponent(txtSetPlanFee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPlanFee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addComponent(btnAdd)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -883,11 +872,13 @@ public class MembersView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(490, 551, Short.MAX_VALUE))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20))
+                        .addComponent(jScrollPane4)
+                        .addContainerGap())))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -905,20 +896,12 @@ public class MembersView extends javax.swing.JFrame {
 
         jPanel11.setBackground(new java.awt.Color(32, 44, 65));
 
-        txtSearchMember2.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
-        txtSearchMember2.setText("Search Member");
-
-        rByMemberId.setBackground(new java.awt.Color(32, 44, 65));
-        buttonGroup6.add(rByMemberId);
-        rByMemberId.setForeground(new java.awt.Color(255, 255, 255));
-        rByMemberId.setText("By Member ID");
-
-        rByMemberName.setBackground(new java.awt.Color(32, 44, 65));
-        buttonGroup6.add(rByMemberName);
-        rByMemberName.setForeground(new java.awt.Color(255, 255, 255));
-        rByMemberName.setText("My Member Name");
-
         btnLoadAllMembers2.setText("Load All Members");
+        btnLoadAllMembers2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoadAllMembers2ActionPerformed(evt);
+            }
+        });
 
         tblMembershipManagement.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -982,37 +965,34 @@ public class MembersView extends javax.swing.JFrame {
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel36, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                            .addComponent(jLabel36, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
                             .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                         .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel14Layout.createSequentialGroup()
+                            .addComponent(RAnnual3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(rMonthly3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(RAnnual3))
-                            .addComponent(txtMembershipID, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMembershipPlan, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(97, 97, 97))
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel14Layout.createSequentialGroup()
-                                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtStartDate2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(48, 48, 48)
-                                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtMembershipDuration2, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                                    .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtEndDate2)))
-                            .addGroup(jPanel14Layout.createSequentialGroup()
-                                .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(48, 48, 48)
-                                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnAddMembership)
-                                    .addComponent(txtMembershipFee2, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(txtMembershipPlan, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtMembershipID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel14Layout.createSequentialGroup()
+                            .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtStartDate2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(48, 48, 48)
+                            .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtMembershipDuration2, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtEndDate2)))
+                        .addGroup(jPanel14Layout.createSequentialGroup()
+                            .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(48, 48, 48)
+                            .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnAddMembership)
+                                .addComponent(txtMembershipFee2, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1189,6 +1169,10 @@ public class MembersView extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
         );
 
+        btnByMemberID1.setText("By Member ID");
+
+        btnByMemberName1.setText("By Member Name");
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
@@ -1196,21 +1180,19 @@ public class MembersView extends javax.swing.JFrame {
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel11Layout.createSequentialGroup()
-                                .addComponent(txtSearchMember2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(rByMemberId)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(rByMemberName)
-                                .addGap(10, 10, 10)
+                                .addComponent(btnByMemberID1)
+                                .addGap(76, 76, 76)
+                                .addComponent(btnByMemberName1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnLoadAllMembers2))
                             .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20))
+                        .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(40, 40, 40))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1218,10 +1200,10 @@ public class MembersView extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtSearchMember2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(rByMemberId)
-                            .addComponent(rByMemberName)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnByMemberID1)
+                                .addComponent(btnByMemberName1))
                             .addComponent(btnLoadAllMembers2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
@@ -1237,7 +1219,7 @@ public class MembersView extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2)
+            .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 887, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1252,7 +1234,8 @@ public class MembersView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1278,6 +1261,33 @@ public class MembersView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    //For MAmbership Plan
+    public void displayPlanAtComboBox() {
+        cmbMemberShipPlan.removeAllItems();
+        MembershipPlanDao mmd = new MembershipPlanDaoImplementation();
+        List<MembershipPlan> list = mmd.getList();
+        for (MembershipPlan p : list) {
+            cmbMemberShipPlan.addItem(p.getPlanID());
+        }
+    }
+
+    //For Membership Plan Table
+    public void displayMembershipPlanIntoTable() {
+        DefaultTableModel model = (DefaultTableModel) tblMembershipPlans.getModel();
+        model.setRowCount(0);
+        MembershipPlanDao mmd = new MembershipPlanDaoImplementation();
+        List<MembershipPlan> list = mmd.getList();
+        Object[] cols = new Object[4];
+        for (int i = 0; i < list.size(); i++) {
+            cols[0] = list.get(i).getPlanID();
+            cols[1] = list.get(i).getPlanType();
+            cols[2] = list.get(i).getPlanDuration();
+            cols[3] = list.get(i).getPlanFee();
+            model.addRow(cols);
+        }
+
+    }
 
     private void btnUpdate2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdate2ActionPerformed
         // TODO add your handling code here:
@@ -1328,6 +1338,98 @@ public class MembersView extends javax.swing.JFrame {
         //        new LoginView().setVisible(true);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        // TODO add your handling code here:
+        String gender = null;
+        if (rMale.isSelected()) {
+            gender = rMale.getText();
+        }
+        if (rFemale.isSelected()) {
+            gender = rFemale.getText();
+        }
+        try {
+            MembersManagement mm = new MembersManagement(txtMemberID.getText(), txtFname.getText(),
+                    txtLname.getText(), txtBirthday.getText(), gender, txtBloodGroup.getText(),
+                    txtHCondition.getText(), txtAreaAddress.getText(), txtContactInfo.getText(),
+                    txtEmail.getText());
+            MembersManagementDao mmd = new MManagementDaoImplement();
+            mmd.save(mm);
+            JOptionPane.showMessageDialog(null, "Register Successfull!");
+        } catch (NumberFormatException e) {
+
+        } catch (NullPointerException e) {
+        }
+
+    }//GEN-LAST:event_btnRegisterActionPerformed
+
+    private void btnLoadAllMembersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadAllMembersActionPerformed
+        // For Registered Members Table
+        MembersManagementDao mmd = new MManagementDaoImplement();
+        List<MembersManagement> list = mmd.getList();
+        DefaultTableModel model = (DefaultTableModel) tblRegisteredMembers.getModel();
+        model.setRowCount(0);
+        Object[] cols = new Object[3];
+        for (int i = 0; i < list.size(); i++) {
+            cols[0] = list.get(i).getMembersID();
+            cols[1] = list.get(i).getFname();
+            cols[2] = list.get(i).getLname();
+            model.addRow(cols);
+        }
+    }//GEN-LAST:event_btnLoadAllMembersActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        String planType = null;
+        if (rMonthly2.isSelected()) {
+            planType = rMonthly2.getText();
+        }
+        if (rAnnual2.isSelected()) {
+            planType = rAnnual2.getText();
+        }
+        try {
+            MembershipPlan mp = new MembershipPlan(txtPlanID.getText(), planType,
+                    txtPlanDuration.getText(), Double.parseDouble(txtPlanFee.getText()));
+            MembershipPlanDao mpdao = new MembershipPlanDaoImplementation();
+            mpdao.save(mp);
+        } catch (NullPointerException e) {
+
+        } catch (NumberFormatException e) {
+        }
+        MembersView view = new MembersView();
+        displayMembershipPlanIntoTable();
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void tblMembershipPlansMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMembershipPlansMouseClicked
+        //For Mambership Plan
+        DefaultTableModel model = (DefaultTableModel) tblMembershipPlans.getModel();
+        int i = tblMembershipPlans.getSelectedRow();
+        cmbMemberShipPlan.setSelectedItem(model.getValueAt(i, 0).toString());
+        if (rMonthly.getText().equalsIgnoreCase(model.getValueAt(i, 1).toString())) {
+            rMonthly.setSelected(true);
+        }
+        if (rAnnual.getText().equalsIgnoreCase(model.getValueAt(i, 1).toString())) {
+            rAnnual.setSelected(true);
+        }
+        txtMembershipDuration.setText(model.getValueAt(i, 2).toString());
+        txtMembershipFee.setText(model.getValueAt(i, 3).toString());
+
+    }//GEN-LAST:event_tblMembershipPlansMouseClicked
+
+    private void btnLoadAllMembers2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadAllMembers2ActionPerformed
+        // For Membership Management Table
+        MembersManagementDao mmd = new MManagementDaoImplement();
+        List<MembersManagement> list = mmd.getList();
+        DefaultTableModel model = (DefaultTableModel) tblMembershipManagement.getModel();
+        model.setRowCount(0);
+        Object[] cols = new Object[3];
+        for (int i = 0; i < list.size(); i++) {
+            cols[0] = list.get(i).getMembersID();
+            cols[1] = list.get(i).getFname();
+            cols[2] = list.get(i).getLname();
+            model.addRow(cols);
+        }
+    }//GEN-LAST:event_btnLoadAllMembers2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1368,10 +1470,12 @@ public class MembersView extends javax.swing.JFrame {
     private javax.swing.JRadioButton RAnnual3;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnAddMembership;
-    private javax.swing.JRadioButton btnByID;
-    private javax.swing.JRadioButton btnByName;
-    private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnByMemberID;
+    private javax.swing.JButton btnByMemberID1;
+    private javax.swing.JButton btnByMemberName;
+    private javax.swing.JButton btnByMemberName1;
     private javax.swing.JButton btnCancel2;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnInventory;
     private javax.swing.JButton btnLoadAllMembers;
     private javax.swing.JButton btnLoadAllMembers2;
@@ -1461,15 +1565,10 @@ public class MembersView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JLabel lblMemberId;
     private javax.swing.JLabel lblPhoto;
-    private javax.swing.JRadioButton rActive;
     private javax.swing.JRadioButton rAnnual;
     private javax.swing.JRadioButton rAnnual2;
-    private javax.swing.JRadioButton rByMemberId;
-    private javax.swing.JRadioButton rByMemberName;
     private javax.swing.JRadioButton rFemale;
-    private javax.swing.JRadioButton rInactive;
     private javax.swing.JRadioButton rMale;
     private javax.swing.JRadioButton rMonthly;
     private javax.swing.JRadioButton rMonthly2;
@@ -1487,6 +1586,7 @@ public class MembersView extends javax.swing.JFrame {
     private javax.swing.JTextField txtFname;
     private javax.swing.JTextArea txtHCondition;
     private javax.swing.JTextField txtLname;
+    private javax.swing.JTextField txtMemberID;
     private javax.swing.JTextField txtMemberId;
     private javax.swing.JTextField txtMemberStatus;
     private javax.swing.JTextField txtMemberType;
@@ -1496,11 +1596,9 @@ public class MembersView extends javax.swing.JFrame {
     private javax.swing.JTextField txtMembershipFee2;
     private javax.swing.JTextField txtMembershipID;
     private javax.swing.JTextField txtMembershipPlan;
-    private javax.swing.JTextField txtSearchMember;
-    private javax.swing.JTextField txtSearchMember2;
-    private javax.swing.JTextField txtSetDurationPlan;
-    private javax.swing.JTextField txtSetNewPlanId;
-    private javax.swing.JTextField txtSetPlanFee;
+    private javax.swing.JTextField txtPlanDuration;
+    private javax.swing.JTextField txtPlanFee;
+    private javax.swing.JTextField txtPlanID;
     private javax.swing.JTextField txtStartDate;
     private javax.swing.JTextField txtStartDate2;
     // End of variables declaration//GEN-END:variables

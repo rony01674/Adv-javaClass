@@ -186,7 +186,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(1, 140, 157));
-        jLabel3.setText("BodyBuilding Center");
+        jLabel3.setText("CrossFit Gym Narayanganj");
 
         jLabel4.setFont(new java.awt.Font("Lucida Sans Typewriter", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(1, 140, 157));
@@ -204,11 +204,11 @@ public class Dashboard extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap(218, Short.MAX_VALUE)
+                        .addGap(220, 220, 220)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(218, Short.MAX_VALUE))
+                .addGap(220, 220, 220))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

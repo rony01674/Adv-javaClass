@@ -1,40 +1,39 @@
 package nganjGym.pojo;
 
-public class Register {
-
-    private String insId;
+public class MembersManagement {
+    private String membersID;
     private String fname;
     private String lname;
     private String birthday;
     private String gender;
     private String bloodGroup;
+    private String hCondition;
     private String address;
     private String contact;
     private String email;
-    private String password;
 
-    public Register() {
+    public MembersManagement() {
     }
 
-    public Register(String insId, String fname, String lname, String birthday, String gender, String bloodGroup, String address, String contact, String email, String password) {
-        this.insId = insId;
+    public MembersManagement(String membersID, String fname, String lname, String birthday, String gender, String bloodGroup, String hCondition, String address, String contact, String email) {
+        this.membersID = membersID;
         this.fname = fname;
         this.lname = lname;
         this.birthday = birthday;
         this.gender = gender;
         this.bloodGroup = bloodGroup;
+        this.hCondition = hCondition;
         this.address = address;
         this.contact = contact;
         this.email = email;
-        this.password = password;
     }
 
-    public String getInsId() {
-        return insId;
+    public String getMembersID() {
+        return membersID;
     }
 
-    public void setInsId(String insId) {
-        this.insId = insId;
+    public void setMembersID(String membersID) {
+        this.membersID = membersID;
     }
 
     public String getFname() {
@@ -77,6 +76,14 @@ public class Register {
         this.bloodGroup = bloodGroup;
     }
 
+    public String gethCondition() {
+        return hCondition;
+    }
+
+    public void sethCondition(String hCondition) {
+        this.hCondition = hCondition;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -100,13 +107,6 @@ public class Register {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
+    
+    
 }

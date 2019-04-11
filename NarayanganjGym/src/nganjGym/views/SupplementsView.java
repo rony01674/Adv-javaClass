@@ -17,6 +17,7 @@ public class SupplementsView extends javax.swing.JFrame {
      * Creates new form Dashboard
      */
     public SupplementsView() {
+        super("Supplements");
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -43,10 +44,10 @@ public class SupplementsView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        tblMemberDetails = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblSupplemenDetails = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -196,7 +197,7 @@ public class SupplementsView extends javax.swing.JFrame {
         jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 27, 78, -1));
         jPanel4.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 27, 271, -1));
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        tblMemberDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -204,7 +205,7 @@ public class SupplementsView extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane5.setViewportView(jTable4);
+        jScrollPane5.setViewportView(tblMemberDetails);
 
         jPanel4.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 55, 271, 196));
 
@@ -212,15 +213,15 @@ public class SupplementsView extends javax.swing.JFrame {
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Supplement Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblSupplemenDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Item Stock ID", "Item ID", "Item Name", "Unit price"
+                "Item ID", "Item Name", "Unit price", "Item Stock ID"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tblSupplemenDetails);
 
         jPanel5.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 27, 390, 225));
 
@@ -508,8 +509,6 @@ public class SupplementsView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable4;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
@@ -523,5 +522,7 @@ public class SupplementsView extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTable tblMemberDetails;
+    private javax.swing.JTable tblSupplemenDetails;
     // End of variables declaration//GEN-END:variables
 }

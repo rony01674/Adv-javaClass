@@ -6,7 +6,6 @@
 package nganjGym.daoImplements;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,11 +22,11 @@ import nganjGym.pojo.Register;
  * @author Asaduzzaman Rony
  */
 public class RegisterImplementation implements RegisterDao {
-
+    
     public static void main(String[] args) {
         new RegisterImplementation().createTable();
     }
-
+    
     Connection connection = DbConnection.getDBConnection();
 
 //    private int insId;
@@ -43,9 +42,9 @@ public class RegisterImplementation implements RegisterDao {
     public void createTable() {
         String sql = "create table IF NOT EXISTS register(ins_id varchar(10)"
                 + " primary key, first_name varchar (30), last_name varchar (20), birthday varchar (20),"
-                + " gender varchar (8), address varchar (100), contact varchar (14) unique, email varchar (30)"
+                + " gender varchar (8), blood_group varchar(10), address varchar (100), contact varchar (14) unique, email varchar (30)"
                 + " unique, password varchar (30))";
-
+        
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.execute();
@@ -54,12 +53,12 @@ public class RegisterImplementation implements RegisterDao {
             Logger.getLogger(RegisterImplementation.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     @Override
     public void save(Register register) {
-        String sql = "insert into register(ins_id, first_name, last_name, birthday, gender, address,"
-                + " contact, email, password) values(?,?,?,?,?,?,?,?,?)";
-
+        String sql = "insert into register(ins_id, first_name, last_name, birthday, gender, blood_group, address,"
+                + " contact, email, password) values(?,?,?,?,?,?,?,?,?,?)";
+        
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, register.getInsId());
@@ -67,39 +66,40 @@ public class RegisterImplementation implements RegisterDao {
             ps.setString(3, register.getLname());
             ps.setString(4, register.getBirthday());
             ps.setString(5, register.getGender());
-            ps.setString(6, register.getAddress());
-            ps.setString(7, register.getContact());
-            ps.setString(8, register.getEmail());
-            ps.setString(9, register.getPassword());
+            ps.setString(6, register.getBloodGroup());
+            ps.setString(7, register.getAddress());
+            ps.setString(8, register.getContact());
+            ps.setString(9, register.getEmail());
+            ps.setString(10, register.getPassword());
             ps.executeUpdate();
             System.out.println("Insert successfull");
-
+            
         } catch (SQLException ex) {
             Logger.getLogger(RegisterImplementation.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
     }
-
+    
     @Override
     public void update(Register register) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
     public Register getUserByID(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
     public Register getUserByLastName(String lname) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
     public void delete(Register register) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
     public List<Register> getList() {
         List<Register> list = new ArrayList<>();
@@ -110,14 +110,14 @@ public class RegisterImplementation implements RegisterDao {
             while (rs.next()) {
                 Register register = new Register(rs.getString(1), rs.getString(2),
                         rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
-                        rs.getString(7), rs.getString(8), rs.getString(9));
+                        rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10));
                 list.add(register);
             }
-
+            
         } catch (SQLException ex) {
             Logger.getLogger(RegisterImplementation.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
-
+    
 }

@@ -17,6 +17,7 @@ public class SuppliersView extends javax.swing.JFrame {
      * Creates new form Dashboard
      */
     public SuppliersView() {
+        super("Suppliers");
         initComponents();
         setLocationRelativeTo(null);
     }

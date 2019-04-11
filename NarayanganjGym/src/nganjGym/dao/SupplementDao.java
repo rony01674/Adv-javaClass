@@ -9,6 +9,7 @@ package nganjGym.dao;
  *
  * @author User
  */
-public interface Supplement {
+public interface SupplementDao {
+   
     
 }

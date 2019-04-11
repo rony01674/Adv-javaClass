@@ -10,5 +10,13 @@ package nganjGym.pojo;
  * @author User
  */
 public class Inventory {
-    
+    private String itemStockId;
+    private String ItemId;
+    private String itemName;
+    private String itemType;
+    private String unitPrice;
+    private double sellingPrice;
+    private double buyingPrice;
+    private int quantity;
+    private int total;
 }

@@ -21,6 +21,7 @@ public class MyAccountView extends javax.swing.JFrame {
      * Creates new form Dashboard
      */
     public MyAccountView() {
+        super("My Account");
         initComponents();
         setLocationRelativeTo(null);
         displayDataIntoLabel();
@@ -56,8 +57,6 @@ public class MyAccountView extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        rActive = new javax.swing.JRadioButton();
-        rInactive = new javax.swing.JRadioButton();
         txtFname = new javax.swing.JTextField();
         txtUserName = new javax.swing.JTextField();
         rMale = new javax.swing.JRadioButton();
@@ -218,17 +217,6 @@ public class MyAccountView extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Blood Group");
 
-        rActive.setBackground(new java.awt.Color(1, 140, 157));
-        buttonGroup1.add(rActive);
-        rActive.setForeground(new java.awt.Color(255, 255, 255));
-        rActive.setSelected(true);
-        rActive.setText("Active");
-
-        rInactive.setBackground(new java.awt.Color(1, 140, 157));
-        buttonGroup1.add(rInactive);
-        rInactive.setForeground(new java.awt.Color(255, 255, 255));
-        rInactive.setText("Inactive");
-
         rMale.setBackground(new java.awt.Color(32, 44, 65));
         buttonGroup2.add(rMale);
         rMale.setForeground(new java.awt.Color(255, 255, 255));
@@ -323,16 +311,13 @@ public class MyAccountView extends javax.swing.JFrame {
                                         .addComponent(txtContactInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(rActive))
-                                .addGap(10, 10, 10)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblInsId, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(12, 12, 12)
-                                        .addComponent(rInactive)))
-                                .addGap(30, 30, 30)
-                                .addComponent(jLabel9)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(10, 10, 10)
+                                        .addComponent(lblInsId, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(30, 30, 30)
+                                        .addComponent(jLabel9))
+                                    .addComponent(btnUploadPhoto))
                                 .addGap(18, 18, 18)
                                 .addComponent(txtBloodGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(30, 30, 30)
@@ -340,14 +325,13 @@ public class MyAccountView extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(btnUploadPhoto)
-                                .addGap(88, 88, 88)
+                                .addComponent(btnChangePassword)
+                                .addGap(66, 66, 66)
                                 .addComponent(btnEdit)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnUpdate)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnCancel))
-                            .addComponent(btnChangePassword))
+                                .addComponent(btnCancel)))
                         .addGap(30, 30, 30))))
         );
         jPanel3Layout.setVerticalGroup(
@@ -398,29 +382,27 @@ public class MyAccountView extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(7, 7, 7)
-                        .addComponent(rActive))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblInsId, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(7, 7, 7)
-                        .addComponent(rInactive))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addComponent(txtBloodGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel14)))))
-                .addGap(7, 7, 7)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnUploadPhoto)
-                    .addComponent(btnEdit)
-                    .addComponent(btnUpdate)
-                    .addComponent(btnCancel))
-                .addGap(11, 11, 11)
-                .addComponent(btnChangePassword))
+                                .addComponent(jLabel14)))
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnEdit)
+                                .addComponent(btnChangePassword))
+                            .addComponent(btnUpdate)
+                            .addComponent(btnCancel)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblInsId, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnUploadPhoto)))
+                .addGap(250, 250, 250))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -462,22 +444,24 @@ public class MyAccountView extends javax.swing.JFrame {
     public void displayDataIntoLabel() {
         RegisterDao dao = new RegisterImplementation();
         List<Register> list = dao.getList();
-        Object[] cols = new Object[7];
+        Object[] cols = new Object[8];
         for (int i = 0; i < list.size(); i++) {
             cols[0] = list.get(i).getInsId();
             cols[1] = list.get(i).getFname();
             cols[2] = list.get(i).getLname();
             cols[3] = list.get(i).getBirthday();
-            cols[4] = list.get(i).getAddress();
-            cols[5] = list.get(i).getContact();
-            cols[6] = list.get(i).getEmail();
+            cols[4] = list.get(i).getBloodGroup();
+            cols[5] = list.get(i).getAddress();
+            cols[6] = list.get(i).getContact();
+            cols[7] = list.get(i).getEmail();
             lblInsId.setText((String) cols[0]);
             txtFname.setText((String) cols[1]);
             txtUserName.setText((String) cols[2]);
             txtBirthday.setText((String) cols[3]);
-            txtAreaAddress.setText((String) cols[4]);
-            txtContactInfo.setText((String) cols[5]);
-            txtEmail.setText((String) cols[6]);
+            txtBloodGroup.setText((String) cols[4]);
+            txtAreaAddress.setText((String) cols[5]);
+            txtContactInfo.setText((String) cols[6]);
+            txtEmail.setText((String) cols[7]);
         }
 
     }
@@ -595,9 +579,7 @@ public class MyAccountView extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblInsId;
     private javax.swing.JLabel lblPhoto;
-    private javax.swing.JRadioButton rActive;
     private javax.swing.JRadioButton rFemale;
-    private javax.swing.JRadioButton rInactive;
     private javax.swing.JRadioButton rMale;
     private javax.swing.JTextArea txtAreaAddress;
     private javax.swing.JTextField txtBirthday;
